@@ -5,3 +5,9 @@ export const HttpCode = {
     INTERNAL_SERVER_ERROR: '500',
     BAD_GATEWAY: '502'
 }
+
+export const ApiEndpoints = {
+    FUNDS: '/user/funds',
+    PORTFOLIO: '/portfolio/getHoldings'
+
+}

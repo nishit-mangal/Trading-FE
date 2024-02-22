@@ -8,6 +8,10 @@ export const HttpCode = {
 
 export const ApiEndpoints = {
     FUNDS: '/user/funds',
-    PORTFOLIO: '/portfolio/getHoldings'
+    PORTFOLIO: '/portfolio/getHoldings',
+    TRADE: '/orders/trade'
+}
 
+export const OrderStatus={
+    COMPLETE:'complete'
 }

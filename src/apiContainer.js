@@ -20,3 +20,14 @@ export async function callApiToGetPortfolio() {
 
   return await axios(config);
 }
+
+export async function callApiToTrade(data) {
+  let config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: `${localPort}${ApiEndpoints.TRADE}`,
+    data
+  };
+
+  return await axios(config);
+}

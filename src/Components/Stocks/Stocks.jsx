@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
 import "./Stocks.css";
 import { handleApiToGetPortfolio } from "../../apiHandler";
+import { useSetRecoilState } from "recoil";
+import { showPlaceOrderModal, stockData } from "../../store/atoms/stockData";
 
-export const Stocks = ({setShowPlaceOrderModal, setStockData}) => {
+export const Stocks = () => {
   const [tableData, setTableData] = useState([]);
+  const setStockData = useSetRecoilState(stockData);
+  const setShowPlaceOrderModal = useSetRecoilState(showPlaceOrderModal)
   
   useEffect(() => {
     portfolio();
   }, []);
-  
+
   const portfolio = async () => {
     let response = await handleApiToGetPortfolio();
     if (!response) {
@@ -18,12 +22,10 @@ export const Stocks = ({setShowPlaceOrderModal, setStockData}) => {
     setTableData(response);
   };
 
-  const placeOrder = (row)=>{
-    console.log('place order called', row)
+  const placeOrder = (row) => {
     setShowPlaceOrderModal(true)
     setStockData(row)
-    // return <PlaceOrder />
-  }
+  };
 
   return (
     <div className="table-container">
@@ -52,7 +54,12 @@ export const Stocks = ({setShowPlaceOrderModal, setStockData}) => {
                 <td>{row.oneYearMax}</td>
                 <td>{row.percentFromMax}</td>
                 <td>
-                  <button className="place-order-button" onClick={()=>placeOrder(row)}>Place Order</button>
+                  <button
+                    className="place-order-button"
+                    onClick={() => placeOrder(row)}
+                  >
+                    Place Order
+                  </button>
                 </td>
               </tr>
             );

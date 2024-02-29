@@ -20,7 +20,7 @@ export const BalanceComponent = () => {
   }, []);
   return (
     <div className="balance-container">
-      <div className="balance-info-wrapper">
+      <div>
         <div className="balance-info">
           <span className="balance-label">Available fund:</span>
           <span className="balance-amount">{fundObj.available_margin}</span>

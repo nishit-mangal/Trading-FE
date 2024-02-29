@@ -1,4 +1,4 @@
-import { RecoilRoot, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { Stocks } from "../Stocks/Stocks";
 import { PlaceOrder } from "../PlaceOrder/PlaceOrder";
 import { showPlaceOrderModal } from "../../store/atoms/stockData";

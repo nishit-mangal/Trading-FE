@@ -1,0 +1,16 @@
+.button-container{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #007bff; /* Blue color, you can change it to fit your design */
+    color: #ffffff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.button-container:hover {
+    background-color: #0056b3; /* Darker shade of blue on hover */
+}

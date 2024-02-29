@@ -154,7 +154,7 @@ input {
   flex-direction: column; */
   display: table;
   width: 100%;
-}
+  }
 
 .row {
   display: table-row;
@@ -176,11 +176,5 @@ input {
   /* Adjusting the max-width for smaller screens */
   .place-order-box {
     max-width: 80%;
-  }
-
-  /* Adjusting padding and margin for smaller screens */
-  .balance-container {
-    padding: 10px;
-    margin: 10px auto;
   }
 }

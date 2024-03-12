@@ -4,8 +4,8 @@ import "./BalanceComponent.css";
 
 export const BalanceComponent = () => {
   const [fundObj, setFundObj] = useState({
-    availableFunds: 0,
-    usedFunds: 0,
+    availableFunds: undefined,
+    usedFunds: undefined,
   });
   const balanceInfo = async () => {
     let response = await handleApiToGetAccountBalance();
@@ -13,7 +13,11 @@ export const BalanceComponent = () => {
       alert("Unable to fetch balance. Please try again later");
       return;
     }
-    setFundObj(response);
+    let newObj = {
+      availableFunds: response.available_margin,
+      usedFunds: response.used_margin
+    }
+    setFundObj(newObj);
   };
   useEffect(() => {
     balanceInfo();
@@ -23,11 +27,11 @@ export const BalanceComponent = () => {
       <div>
         <div className="balance-info">
           <span className="balance-label">Available fund:</span>
-          <span className="balance-amount">{fundObj.available_margin}</span>
+          <span className="balance-amount">{fundObj.availableFunds}</span>
         </div>
         <div className="balance-info">
           <span className="balance-label">Used Amount:</span>
-          <span className="balance-amount">{fundObj.used_margin}</span>
+          <span className="balance-amount">{fundObj.usedFunds}</span>
         </div>
       </div>
       <button className="refresh-button" onClick={balanceInfo}>

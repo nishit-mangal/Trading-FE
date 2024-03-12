@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { data, options, pageSizeToFetchOrders } from "../../constants";
+import { options, pageSizeToFetchOrders } from "../../constants";
 import "./OrderHistory.css";
 import { handleApiToFetchOrders } from "../../apiHandler";
 
@@ -18,10 +18,12 @@ export const OrderHistory = ({ setShowOrderHistory }) => {
     if(isLastData){
       return
     }
+    // console.log(orderHistoryContainerRef.current.scrollHeight, orderHistoryContainerRef.current.scrollTop, orderHistoryContainerRef.current.clientHeight)
+    //0.2 is given so that multiple update doesn't happen for pageNumber. We could have also updated the pageNumber after receiving API response.
     if (
       (orderHistoryContainerRef.current.scrollHeight -
         orderHistoryContainerRef.current.scrollTop) <=
-        (orderHistoryContainerRef.current.clientHeight)+0.2 &&
+        (orderHistoryContainerRef.current.clientHeight)+0.5 &&
       !loading && !isLastData
     ) {
       setPageNumber(prev=>prev+1);
@@ -46,7 +48,12 @@ export const OrderHistory = ({ setShowOrderHistory }) => {
     orderDetails();
   }, [pageNumber]);
   useEffect(() => {
+    // console.log(orderHistoryContainerRef.current.scrollHeight, orderHistoryContainerRef.current.scrollTop, orderHistoryContainerRef.current.clientHeight)
+    // if(orderHistoryContainerRef.current.scrollHeight===orderHistoryContainerRef.current.clientHeight){
+    //   setPageNumber(prev=>prev+1)
+    // }
     orderHistoryContainerRef.current.addEventListener("scroll", handleScroll);
+    
     return () => {
       orderHistoryContainerRef.current && orderHistoryContainerRef.current.removeEventListener(
         "scroll",
@@ -62,11 +69,11 @@ export const OrderHistory = ({ setShowOrderHistory }) => {
           Close
         </button>
         <div className="order-row headerRow">
-          <div className="col-2"> Order id</div>
-          <div className="col-1"> Trading Symbol</div>
-          <div className="col-1"> Quantity</div>
-          <div className="col-1"> Order Type</div>
-          <div className="col-1"> Average Price</div>
+          <div className="col-1"> Order id</div>
+          <div className="col-2"> Trading Symbol</div>
+          <div className="col-2"> Quantity</div>
+          <div className="col-2"> Order Type</div>
+          <div className="col-2"> Average Price</div>
           <div className="col-5"> Date & Time</div>
         </div>
         {ordersData.map((row, index) => {
@@ -77,11 +84,11 @@ export const OrderHistory = ({ setShowOrderHistory }) => {
           const formattedTimestamp = date.toLocaleString("en-US", options);
           return (
             <div className="order-row" key={index}>
-              <div className="col-2"> {row.order_id}</div>
-              <div className="col-1"> {row.trading_symbol}</div>
-              <div className="col-1"> {row.quantity}</div>
-              <div className="col-1"> {row.order_type}</div>
-              <div className="col-1"> {row.average_price}</div>
+              <div className="col-1"> {row.order_id}</div>
+              <div className="col-2"> {row.trading_symbol}</div>
+              <div className="col-2"> {row.quantity}</div>
+              <div className="col-2"> {row.order_type}</div>
+              <div className="col-2"> {row.average_price}</div>
               <div className="col-5"> {formattedTimestamp}</div>
             </div>
           );

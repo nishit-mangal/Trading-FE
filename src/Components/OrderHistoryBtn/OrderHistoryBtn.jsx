@@ -7,7 +7,7 @@ export const OrderHistoryBtn = () => {
     <>
       <button
         onClick={() => setShowOrderHistory(true)}
-        className="button-container"
+        className="orderHisory-button"
       >
         Order Histroy
       </button>

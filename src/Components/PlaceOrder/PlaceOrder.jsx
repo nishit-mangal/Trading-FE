@@ -41,7 +41,7 @@ export const PlaceOrder = () => {
   return (
     <div className="place-order-container">
       <div className="place-order-box">
-        <button className="cancel-button" onClick={cancelButton}>
+        <button className="cancel-button-placeOrder" onClick={cancelButton}>
           Cancel
         </button>
         <p>
@@ -55,22 +55,23 @@ export const PlaceOrder = () => {
           min="0"
           onChange={handleInputTag}
         ></input>
-        <div className="table-container">
+
+        <div className="table-container-placeOrder">
           <div className="row">
             <div className="cell">Company Name: </div>
-            <div className="value">{data.companyName}</div>
+            <div>{data.companyName}</div>
           </div>
           <div className="row">
             <div className="cell">Current Quantity: </div>
-            <div className="value">{data.quantity}</div>
+            <div>{data.quantity}</div>
           </div>
           <div className="row">
             <div className="cell">% from max: </div>
-            <div className="value">{data.percentFromMax}</div>
+            <div>{data.percentFromMax}</div>
           </div>
           <div className="row">
             <div className="cell">Identifier: </div>
-            <div className="value">{data.instrumentToken}</div>
+            <div>{data.instrumentToken}</div>
           </div>
         </div>
         <div className="button-container">

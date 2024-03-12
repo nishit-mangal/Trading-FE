@@ -31,3 +31,16 @@ export async function callApiToTrade(data) {
 
   return await axios(config);
 }
+
+export async function callApiToFetchOrders(data) {
+  let params = {
+    pageNumber:data
+  }
+  let config = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: `${localPort}${ApiEndpoints.FETCH_ORDERS}/${data}`,
+  };
+
+  return await axios(config);
+}

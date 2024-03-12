@@ -1,16 +1,3 @@
-/* .place-order-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
-  z-index: 9999; 
-  display: flex;
-  justify-content: center;
-  align-items: center;  
-} */
-
 .place-order-container {
   display: flex;
   justify-content: center;
@@ -23,100 +10,43 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* .place-order-box {
-  position: relative;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 4px;
-  max-width: 40%;
-  padding: 0.5rem 32px 16px;
-} */
 .place-order-box {
   background-color: #f8f9fa;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  width: 100%;
 }
 
-/* .place-order-box p {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 14px;
-  position:relative;
-  top:1rem;
-  padding: 0px 0px 1rem;
-} */
 p {
-  margin-top: 16px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 14px;
   line-height: 1.2;
   color: #333;
   font-weight: 700;
+  max-width: 27rem;
 }
 
 input {
-  width: calc(100% - 20px);
-  padding: 8px;
-  margin-top: 8px;
+  width: calc(100% - 2.1rem);
+  padding: 1rem;
   border-radius: 4px;
   border: 1px solid #ced4da;
 }
 
-/* .button-container {
-  width: auto;
-  border: 2px solid red;
-  padding: 0.5rem 1rem;
-  display: flex;
-  margin-top: 1rem;
-  color: black;
-  font-size: 1em;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-weight: bolder;
-} */
 .button-container {
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+  justify-content: space-evenly;
+  padding-top: 2rem;
 }
 
-/* .buy-button {
-  position: relative;
-  width: 50%;
-  margin: 0px 4%;
-  border: 2px solid rgb(0, 78, 0);
-  border-radius: 4px;
-  background-color: rgb(0, 95, 0);
-  height: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.sell-button {
-  position: relative;
-  width: 50%;
-  margin: 0px 4%;
-  border: 2px solid rgb(121, 0, 0);
-  border-radius: 4px;
-  background-color: rgb(177, 0, 0);
-  height: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-} */
 .buy-button,
 .sell-button {
-  padding: 12px 0rem;
+  padding: 12px 3rem;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
-  width:40%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
 }
 .buy-button {
   background-color: #007bff;
@@ -131,12 +61,7 @@ input {
   opacity: 0.8;
 }
 
-/* .cancel-button{
-    position: absolute;
-    right:1rem;
-    cursor: pointer;} */
-
-.cancel-button {
+.cancel-button-placeOrder {
   background-color: #dc3545;
   color: white;
   border: none;
@@ -144,43 +69,29 @@ input {
   border-radius: 4px;
   cursor: pointer;
 }
-.cancel-button:hover {
+.cancel-button-placeOrder:hover {
   background-color: #c82333;
 }
 
-.table-container {
-  /* padding-top: 1rem;
+.table-container-placeOrder {
+  padding-top: 1.5rem;
   display: flex;
-  flex-direction: column; */
-  display: table;
-  width: 100%;
+  flex-direction: column;
 }
 
 .row {
-  display: table-row;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .cell {
-  display: table-cell;
-  width: 35%; /* Column 1 takes 30% of the width */
-  padding: 0.5rem;
-  vertical-align: top; /* Align content to the top */
-}
-.value {
-  display: table-cell;
-  padding: 0.5rem;
-  vertical-align: top; /* Align content to the top */
+  font-weight: 600;
 }
 
 /* Responsive Design */
 @media screen and (max-width: 480px) {
   /* Adjusting the max-width for smaller screens */
   .place-order-box {
-    max-width: 80%;
-  }
-
-  /* Adjusting padding and margin for smaller screens */
-  .balance-container {
-    padding: 10px;
-    margin: 10px auto;
+    /* max-width: 80%; */
   }
 }

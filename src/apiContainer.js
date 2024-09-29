@@ -44,3 +44,17 @@ export async function callApiToFetchOrders(data) {
 
   return await axios(config);
 }
+
+export async function callApiToGenerateCode(code) {
+  let params = {
+    code
+  }
+  let config = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: `${localPort}${ApiEndpoints.GENERATE_ACCESS_TOKEN}`,
+    params
+  };
+
+  return await axios(config);
+}

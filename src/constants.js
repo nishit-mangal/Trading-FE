@@ -12,7 +12,8 @@ export const ApiEndpoints = {
   FUNDS: "/user/funds",
   PORTFOLIO: "/portfolio/getHoldings",
   TRADE: "/orders/trade",
-  FETCH_ORDERS: "/orders/orderHistory"
+  FETCH_ORDERS: "/orders/orderHistory",
+  GENERATE_ACCESS_TOKEN: '/authorization/generateAccessToken'
 };
 
 export const OrderStatus = {

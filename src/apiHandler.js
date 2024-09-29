@@ -1,4 +1,4 @@
-import { callApiToFetchOrders, callApiToGetAccountBalance, callApiToGetPortfolio, callApiToTrade } from "./apiContainer";
+import { callApiToFetchOrders, callApiToGenerateCode, callApiToGetAccountBalance, callApiToGetPortfolio, callApiToTrade } from "./apiContainer";
 import { HttpCode } from "./constants";
 
 export async function handleApiToGetAccountBalance(){
@@ -49,6 +49,19 @@ export async function handleApiToTrade(quantity, instrumentToken, transaction_ty
 export async function handleApiToFetchOrders(pageNumber){
     try{
         let response = await callApiToFetchOrders(pageNumber)
+        if(!response.data || response.data.statusCode!== HttpCode.SUCCESS || !response.data.data){
+            return null
+        }
+        return response.data.data
+    }catch(err){
+        console.log(err);
+        return null;
+    }
+}
+
+export async function handleApiToGenerateAccessCode(code){
+    try{
+        let response = await callApiToGenerateCode(code)
         if(!response.data || response.data.statusCode!== HttpCode.SUCCESS || !response.data.data){
             return null
         }

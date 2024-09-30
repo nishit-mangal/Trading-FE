@@ -1,11 +1,12 @@
 import axios from "axios";
-import { ApiEndpoints, localPort } from "./constants";
+import { API_HEADERS, ApiEndpoints, localPort } from "./constants";
 
 export async function callApiToGetAccountBalance() {
   let config = {
     method: "get",
     maxBodyLength: Infinity,
-    url: `${localPort}${ApiEndpoints.FUNDS}`
+    url: `${localPort}${ApiEndpoints.FUNDS}`,
+    headers : API_HEADERS
   };
 
   return await axios(config);
@@ -15,7 +16,8 @@ export async function callApiToGetPortfolio() {
   let config = {
     method: "get",
     maxBodyLength: Infinity,
-    url: `${localPort}${ApiEndpoints.PORTFOLIO}`
+    url: `${localPort}${ApiEndpoints.PORTFOLIO}`,
+    headers : API_HEADERS
   };
 
   return await axios(config);
@@ -26,7 +28,8 @@ export async function callApiToTrade(data) {
     method: "post",
     maxBodyLength: Infinity,
     url: `${localPort}${ApiEndpoints.TRADE}`,
-    data
+    data,
+    headers : API_HEADERS
   };
 
   return await axios(config);
@@ -39,7 +42,7 @@ export async function callApiToFetchOrders(data) {
   let config = {
     method: "get",
     maxBodyLength: Infinity,
-    url: `${localPort}${ApiEndpoints.FETCH_ORDERS}/${data}`,
+    url: `${localPort}${ApiEndpoints.FETCH_ORDERS}/${data}`
   };
 
   return await axios(config);

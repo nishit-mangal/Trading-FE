@@ -29,3 +29,11 @@ export const options = {
   second: "numeric",
   timeZone: "UTC",
 };
+
+export const LOCAL_STORAGE = {
+  ACCESS_TOKEN: "Upstox Access Token"
+}
+
+export const API_HEADERS = {
+  'Upstox-Access-Token': `Bearer ${localStorage.getItem(LOCAL_STORAGE.ACCESS_TOKEN)}`
+}

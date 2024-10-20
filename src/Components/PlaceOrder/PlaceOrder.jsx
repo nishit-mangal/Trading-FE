@@ -41,10 +41,12 @@ export const PlaceOrder = () => {
   return (
     <div className="place-order-container">
       <div className="place-order-box">
-        <button className="cancel-button-placeOrder" onClick={cancelButton}>
-          Cancel
-        </button>
-        <p>
+        <div className="flex justify-end">
+          <button onClick={cancelButton} >
+            <img src="src\assets\close.png" alt="Cancel" height={15} width={15}></img>
+          </button>
+        </div>
+        <p className="mt-2">
           We only support 'MARKET' orders and 'DAY' delivery for now. We don't
           support intraday 'IOC' orders or 'LIMIT' orders.
         </p>
@@ -54,6 +56,7 @@ export const PlaceOrder = () => {
           type="number"
           min="0"
           onChange={handleInputTag}
+          className="mt-4 p-1"
         ></input>
 
         <div className="table-container-placeOrder">

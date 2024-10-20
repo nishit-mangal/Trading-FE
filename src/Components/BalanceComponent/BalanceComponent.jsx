@@ -34,8 +34,8 @@ export const BalanceComponent = () => {
           <span className="balance-amount">{fundObj.usedFunds}</span>
         </div>
       </div>
-      <button className="refresh-button" onClick={balanceInfo}>
-        Refresh
+      <button className="transition-transform duration-150 ease-in-out transform active:scale-90" onClick={balanceInfo}>
+        <img src="src\assets\refresh.png" alt="Refresh Funds" height={20} width={20} className="transition-transform duration-150 ease-in-out transform hover:scale-110"></img>
       </button>
     </div>
   );

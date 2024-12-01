@@ -2,13 +2,17 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { handleApiToTrade } from "../../apiHandler";
 import { OrderStatus } from "../../constants";
 import "./PlaceOrder.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { showPlaceOrderModal, stockData } from "../../store/atoms/stockData";
 
-export const PlaceOrder = () => {
+export const PlaceOrder = ( {webSocket, messageRec} ) => {
   const data = useRecoilValue(stockData);
   const setShowPlaceOrderModal = useSetRecoilState(showPlaceOrderModal);
   const [quantity, setQuantity] = useState(0);
+
+  useEffect(()=>{
+    webSocket.send(`SUBSCRIBE ${data.instrumentToken}`)
+  }, [])
 
   const cancelButton = () => {
     setShowPlaceOrderModal(false);
@@ -75,6 +79,10 @@ export const PlaceOrder = () => {
           <div className="row">
             <div className="cell">Identifier: </div>
             <div>{data.instrumentToken}</div>
+          </div>
+          <div className="row">
+            <div className="cell">Live Price: </div>
+            <div>{messageRec ?? "NA"}</div>
           </div>
         </div>
         <div className="button-container">

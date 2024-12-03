@@ -13,7 +13,10 @@ export const ApiEndpoints = {
   PORTFOLIO: "/portfolio/getHoldings",
   TRADE: "/orders/trade",
   FETCH_ORDERS: "/orders/orderHistory",
-  GENERATE_ACCESS_TOKEN: '/authorization/generateAccessToken'
+  GENERATE_ACCESS_TOKEN: '/authorization/generateAccessToken',
+  REGISTER_USER: "/user/createUser",
+  VALIDATE_OTP:"/user/validateOTP",
+  RESEND_OTP:"/user/resendOTP"
 };
 
 export const OrderStatus = {

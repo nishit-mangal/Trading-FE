@@ -7,13 +7,14 @@ import { GenerateAccessCode } from "./Components/GenerateAccessCode";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AccessToken } from "./Components/AccessTokenPage";
 import RegisterUser from "./Components/RegisterUser/RegisterUser";
+import { Login } from "./Components/Login";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<div>login page</div>} />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegisterUser />} />
           <Route path="/accessToken" element={<AccessToken />} />
           <Route

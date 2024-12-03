@@ -61,3 +61,36 @@ export async function callApiToGenerateCode(code) {
 
   return await axios(config);
 }
+
+export async function callApiToRegisterUser(userData) {
+  let config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: `${localPort}${ApiEndpoints.REGISTER_USER}`,
+    data:userData
+  };
+
+  return await axios(config);
+}
+
+export async function callApiToVerifyOTP(data) {
+  let config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: `${localPort}${ApiEndpoints.VALIDATE_OTP}`,
+    data
+  };
+
+  return await axios(config);
+}
+
+export async function callApiToResendOTP(data) {
+  let config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: `${localPort}${ApiEndpoints.RESEND_OTP}`,
+    data
+  };
+
+  return await axios(config);
+}

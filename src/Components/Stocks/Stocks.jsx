@@ -16,7 +16,7 @@ export const Stocks = () => {
   const portfolio = async () => {
     let response = await handleApiToGetPortfolio();
     if (!response) {
-      alert("Unable to fetch portfolio. Please try again later");
+      // alert("Unable to fetch portfolio. Please try again later");
       return;
     }
     setTableData(response);

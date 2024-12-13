@@ -43,7 +43,6 @@ function RegisterUser() {
       setIsPasswordMatch(false);
       return;
     }
-    console.log("Success 1")
     
     if(formData.phoneNumber!=="" && !(/^\d+$/.test(formData.phoneNumber))){
       setIsValidPhoneNumber(false);
@@ -52,8 +51,6 @@ function RegisterUser() {
 
     setIsPasswordMatch(true);
     setIsValidPhoneNumber(true);
-
-    console.log("Success");
 
     let reqObj = {
       username:formData.name,
@@ -76,7 +73,7 @@ function RegisterUser() {
       
       {responseErr && <div className='text-red-700 font-light font-serif text-base mt-1 mb-4'>{responseErr}</div>}
       
-      <div className="flex flex-col justify-evenly w-full max-w-sm p-8 bg-white shadow-teal-600 shadow-lg rounded-lg tra">
+      <div className="flex flex-col justify-evenly w-full max-w-sm p-8 bg-white shadow-teal-600 shadow-lg rounded-lg">
         {!showOTPScreen && <div>
           <div className="text-2xl font-sans font-semibold">Register User</div>
 
@@ -184,7 +181,7 @@ function RegisterUser() {
         </div>
         }
         
-        {showOTPScreen && <Otp email={formData.email} setResponseErr={setResponseErr}/>}
+        {showOTPScreen && <Otp email={formData.email} setResponseErr={setResponseErr} page="Signup" />}
 
       </div>
       

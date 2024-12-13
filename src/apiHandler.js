@@ -1,4 +1,4 @@
-import { callApiToFetchOrders, callApiToGenerateCode, callApiToGetAccountBalance, callApiToGetPortfolio, callApiToRegisterUser, callApiToResendOTP, callApiToTrade, callApiToVerifyOTP } from "./apiContainer";
+import { callApiToFetchOrders, callApiToGenerateCode, callApiToGetAccountBalance, callApiToGetPortfolio, callApiToLogin, callApiToRegisterUser, callApiToResendOTP, callApiToSetPin, callApiToTrade, callApiToVerifyOTP, callApiToVerifyPin, callApiToVerifyToken } from "./apiContainer";
 import { HttpCode } from "./constants";
 
 export async function handleApiToGetAccountBalance(){
@@ -111,6 +111,62 @@ export async function handleApiToResendOTP(email){
             return {status:"Err", msg: response.data.responseMessage};
         }
         return {status:"Success", msg:response.data.responseMessage};
+    }catch(err){
+        console.log(err);
+        return {status:"Err", msg: "Some error occured."};
+    }
+}
+
+export async function handleApiToLogin(email, password){
+    try{
+        let response = await callApiToLogin({email, password});
+        if(!response.data || response.data.responseCode!== HttpCode.SUCCESS){
+            return {status:"Err", msg: response.data.responseMessage};
+        }
+        return {status:"Success", msg:response.data.data};
+    }catch(err){
+        console.log(err);
+        return {status:"Err", msg: "Some error occured."};
+    }
+}
+
+export async function handleApiToSetPin(email, pin, password){
+    try{
+        pin = pin.includes("") ? null : pin.join("");
+        let response = await callApiToSetPin({email, pin, password});
+        console.log("Api cookies", document.cookie);
+        if(!response.data || response.data.responseCode!== HttpCode.SUCCESS){
+            return {status:"Err", msg: response.data.responseMessage};
+        }
+        return {status:"Success", msg:response.data.data};
+    }catch(err){
+        console.log(err);
+        return {status:"Err", msg: "Some error occured."};
+    }
+}
+
+export async function handleApiToVerifyPin(email, pin){
+    try{
+        pin = pin.includes("") ? null : pin.join("");
+        let response = await callApiToVerifyPin({email, pin});
+        
+        if(!response.data || response.data.responseCode!== HttpCode.SUCCESS){
+            return {status:"Err", msg: response.data.responseMessage};
+        }
+        return {status:"Success", msg:response.data.data};
+    }catch(err){
+        console.log(err);
+        return {status:"Err", msg: "Some error occured."};
+    }
+}
+
+export async function handleApiToVerifyToken(token){
+    try{
+        let response = await callApiToVerifyToken({token});
+        if(!response.data || response.data.responseCode!== HttpCode.SUCCESS){
+            return {status:"Err", msg: response.data.responseMessage};
+        }
+        return {status:"Success", msg:response.data.data};
     }catch(err){
         console.log(err);
         return {status:"Err", msg: "Some error occured."};

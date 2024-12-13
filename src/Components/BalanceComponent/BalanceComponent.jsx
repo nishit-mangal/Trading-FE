@@ -10,7 +10,7 @@ export const BalanceComponent = () => {
   const balanceInfo = async () => {
     let response = await handleApiToGetAccountBalance();
     if (!response) {
-      alert("Unable to fetch balance. Please try again later");
+      // alert("Unable to fetch balance. Please try again later");
       return;
     }
     let newObj = {

@@ -16,7 +16,11 @@ export const ApiEndpoints = {
   GENERATE_ACCESS_TOKEN: '/authorization/generateAccessToken',
   REGISTER_USER: "/user/createUser",
   VALIDATE_OTP:"/user/validateOTP",
-  RESEND_OTP:"/user/resendOTP"
+  RESEND_OTP:"/user/resendOTP",
+  LOGIN:"/user/login",
+  SET_PIN:"/user/setPin",
+  VERIFY_PIN:"/user/verifyPin",
+  VERIFY_TOKEN:"/authorization/verifyToken"
 };
 
 export const OrderStatus = {
@@ -34,7 +38,8 @@ export const options = {
 };
 
 export const LOCAL_STORAGE = {
-  ACCESS_TOKEN: "Upstox Access Token"
+  ACCESS_TOKEN: "Upstox Access Token",
+  USER_LOGIN_TOKEN : "Access Token"
 }
 
 export const API_HEADERS = {

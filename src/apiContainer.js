@@ -94,3 +94,49 @@ export async function callApiToResendOTP(data) {
 
   return await axios(config);
 }
+
+export async function callApiToLogin(data) {
+  let config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: `${localPort}${ApiEndpoints.LOGIN}`,
+    data
+  };
+
+  return await axios(config);
+}
+
+export async function callApiToSetPin(data) {
+  let config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: `${localPort}${ApiEndpoints.SET_PIN}`,
+    data,
+    withCredentials:true
+  };
+
+  return await axios(config);
+}
+
+export async function callApiToVerifyPin(data) {
+  let config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: `${localPort}${ApiEndpoints.VERIFY_PIN}`,
+    data,
+    withCredentials:true
+  };
+
+  return await axios(config);
+}
+
+export async function callApiToVerifyToken(data){
+  let config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: `${localPort}${ApiEndpoints.VERIFY_TOKEN}`,
+    data
+  };
+
+  return await axios(config);
+}

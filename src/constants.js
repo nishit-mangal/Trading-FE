@@ -20,7 +20,8 @@ export const ApiEndpoints = {
   LOGIN:"/user/login",
   SET_PIN:"/user/setPin",
   VERIFY_PIN:"/user/verifyPin",
-  VERIFY_TOKEN:"/authorization/verifyToken"
+  VERIFY_TOKEN:"/authorization/verifyToken",
+  RESET_PASSWORD: "/user/resetPassword"
 };
 
 export const OrderStatus = {

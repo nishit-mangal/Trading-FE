@@ -1,16 +1,12 @@
 import "./App.css";
-import { BalanceComponent } from "./Components/BalanceComponent/BalanceComponent";
-import { RecoilRoot } from "recoil";
-import { Table } from "./Components/Table/Table";
-import { OrderHistoryBtn } from "./Components/OrderHistoryBtn/OrderHistoryBtn";
-import { GenerateAccessCode } from "./Components/GenerateAccessCode";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { AccessToken } from "./Components/AccessTokenPage";
 import RegisterUser from "./Components/RegisterUser/RegisterUser";
 import { Login } from "./Components/Login";
 import { Protected } from "./Components/Protected";
 import { SetPin } from "./Components/SetPin";
-import { Logout } from "./Components/Logout";
+import { MainPage } from "./Components/MainPage";
+import { RecoilRoot } from "recoil";
 
 const LoginRoutes = () => {
   return (
@@ -30,23 +26,14 @@ function App() {
             <Route path="setPin" element={<SetPin />} />
             <Route path="enterPin" element={<SetPin />} />
           </Route>
-
           <Route
             path="/"
             element={
-              <Protected>
-                <>
-                  <div className="data-class">
-                    <BalanceComponent />
-                    <OrderHistoryBtn />
-                    <GenerateAccessCode />
-                    <Logout />
-                  </div>
-                  <RecoilRoot>
-                    <Table />
-                  </RecoilRoot>
-                </>
-              </Protected>
+              <RecoilRoot>
+                <Protected>
+                  <MainPage />
+                </Protected>
+              </RecoilRoot>
             }
           />
         </Routes>

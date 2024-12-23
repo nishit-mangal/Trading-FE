@@ -140,3 +140,14 @@ export async function callApiToVerifyToken(data){
 
   return await axios(config);
 }
+
+export async function callApiToResetPassword(data){
+  let config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: `${localPort}${ApiEndpoints.RESET_PASSWORD}`,
+    data
+  };
+
+  return await axios(config);
+}

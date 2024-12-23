@@ -2,11 +2,14 @@ import { Navigate } from "react-router-dom";
 import { LOCAL_STORAGE } from "../constants";
 import { handleApiToVerifyToken } from "../apiHandler";
 import { useEffect, useState } from "react";
+import { useSetRecoilState } from "recoil";
+import { userData } from "../store/atoms/userData";
 
 export const Protected = ({ children }) => {
     const [searchParams, setSearchParams] = useState(""); // null for loading state
     const [redirectPath, setRedirectPath] = useState(null);
-
+    const setUserData = useSetRecoilState(userData);
+    
     useEffect(() => {
         verifyToken();
     }, []);
@@ -23,7 +26,10 @@ export const Protected = ({ children }) => {
             setRedirectPath("/login");
             return;
         }
-
+        setUserData({
+            userEmail: msg?.userEmail,
+            userId: msg?.userId
+        })
         if (msg?.hasPin === false) {
             setRedirectPath("/login/setPin");
             setSearchParams(new URLSearchParams({

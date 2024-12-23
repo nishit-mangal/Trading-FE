@@ -1,4 +1,4 @@
-import { callApiToFetchOrders, callApiToGenerateCode, callApiToGetAccountBalance, callApiToGetPortfolio, callApiToLogin, callApiToRegisterUser, callApiToResendOTP, callApiToSetPin, callApiToTrade, callApiToVerifyOTP, callApiToVerifyPin, callApiToVerifyToken } from "./apiContainer";
+import { callApiToFetchOrders, callApiToGenerateCode, callApiToGetAccountBalance, callApiToGetPortfolio, callApiToLogin, callApiToRegisterUser, callApiToResendOTP, callApiToResetPassword, callApiToSetPin, callApiToTrade, callApiToVerifyOTP, callApiToVerifyPin, callApiToVerifyToken } from "./apiContainer";
 import { HttpCode } from "./constants";
 
 export async function handleApiToGetAccountBalance(){
@@ -134,7 +134,6 @@ export async function handleApiToSetPin(email, pin, password){
     try{
         pin = pin.includes("") ? null : pin.join("");
         let response = await callApiToSetPin({email, pin, password});
-        console.log("Api cookies", document.cookie);
         if(!response.data || response.data.responseCode!== HttpCode.SUCCESS){
             return {status:"Err", msg: response.data.responseMessage};
         }
@@ -163,6 +162,25 @@ export async function handleApiToVerifyPin(email, pin){
 export async function handleApiToVerifyToken(token){
     try{
         let response = await callApiToVerifyToken({token});
+        if(!response.data || response.data.responseCode!== HttpCode.SUCCESS){
+            return {status:"Err", msg: response.data.responseMessage};
+        }
+        return {status:"Success", msg:response.data.data};
+    }catch(err){
+        console.log(err);
+        return {status:"Err", msg: "Some error occured."};
+    }
+}
+
+export async function handleApiToResetPassword(email, passwordData){
+    try{
+        let dataObj = {
+            email,
+            currPassword:passwordData.currPassword,
+            newPassword:passwordData.newPassword,
+            confirmNewPassword:passwordData.confirmPassword
+        }
+        let response = await callApiToResetPassword(dataObj);
         if(!response.data || response.data.responseCode!== HttpCode.SUCCESS){
             return {status:"Err", msg: response.data.responseMessage};
         }

@@ -7,6 +7,7 @@ import { Protected } from "./Components/Protected";
 import { SetPin } from "./Components/SetPin";
 import { MainPage } from "./Components/MainPage";
 import { RecoilRoot } from "recoil";
+import { ForgotPassword } from "./Components/ForgetPassword";
 
 const LoginRoutes = () => {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegisterUser />} />
           <Route path="/accessToken" element={<AccessToken />} />
+          <Route path="/forgotPassword/:userId/:token" element = {<ForgotPassword />} />
           <Route path="/login" element={<LoginRoutes />}>
             <Route path="setPin" element={<SetPin />} />
             <Route path="enterPin" element={<SetPin />} />

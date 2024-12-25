@@ -1,4 +1,4 @@
-import { callApiToFetchOrders, callApiToGenerateCode, callApiToGetAccountBalance, callApiToGetPortfolio, callApiToLogin, callApiToRegisterUser, callApiToResendOTP, callApiToResetPassword, callApiToSetPin, callApiToTrade, callApiToVerifyOTP, callApiToVerifyPin, callApiToVerifyToken } from "./apiContainer";
+import { callApiResetForgetPassword, callApiToFetchOrders, callApiToForgetPassword, callApiToGenerateCode, callApiToGetAccountBalance, callApiToGetPortfolio, callApiToLogin, callApiToRegisterUser, callApiToResendOTP, callApiToResetPassword, callApiToSetPin, callApiToTrade, callApiToVerifyOTP, callApiToVerifyPin, callApiToVerifyToken } from "./apiContainer";
 import { HttpCode } from "./constants";
 
 export async function handleApiToGetAccountBalance(){
@@ -181,6 +181,39 @@ export async function handleApiToResetPassword(email, passwordData){
             confirmNewPassword:passwordData.confirmPassword
         }
         let response = await callApiToResetPassword(dataObj);
+        if(!response.data || response.data.responseCode!== HttpCode.SUCCESS){
+            return {status:"Err", msg: response.data.responseMessage};
+        }
+        return {status:"Success", msg:response.data.data};
+    }catch(err){
+        console.log(err);
+        return {status:"Err", msg: "Some error occured."};
+    }
+}
+
+export async function handleApiToForgotPassword(email){
+    try{
+        let response = await callApiToForgetPassword({email:email});
+        if(!response.data || response.data.responseCode!== HttpCode.SUCCESS){
+            return {status:"Err", msg: response.data.responseMessage};
+        }
+        return {status:"Success", msg:response.data.data};
+    }catch(err){
+        console.log(err);
+        return {status:"Err", msg: "Some error occured."};
+    }
+}
+
+
+export async function handleApiToResetForgotPassword(userId, token, passwordData){
+    try{
+        let dataObj = {
+            id:userId,
+            token,
+            newPassword:passwordData.newPassword,
+            confirmNewPassword:passwordData.confirmPassword
+        };        
+        let response = await callApiResetForgetPassword(dataObj);
         if(!response.data || response.data.responseCode!== HttpCode.SUCCESS){
             return {status:"Err", msg: response.data.responseMessage};
         }

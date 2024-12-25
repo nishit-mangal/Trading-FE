@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { handleApiToLogin, handleApiToVerifyToken } from "../apiHandler";
+import { handleApiToForgotPassword, handleApiToLogin, handleApiToVerifyToken } from "../apiHandler";
 import { Otp } from "./Otp";
 import { LOCAL_STORAGE } from "../constants";
 
@@ -9,6 +9,7 @@ export const Login = () => {
     
     const [isAccountVerified, setIsAccountVerified] = useState(-1);
     const [responseErr, setResponseErr] = useState();
+    const [successMsg, setSuccessMsg] = useState();
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -21,11 +22,11 @@ export const Login = () => {
             formData.email,
             formData.password
         );
-        setOTPEmail(msg.userEmail);        
         if (status === "Err") {
             setResponseErr(msg);
             return;
         }
+        setOTPEmail(msg.userEmail);        
         setResponseErr(null);
         
         localStorage.setItem(LOCAL_STORAGE.USER_LOGIN_TOKEN, msg?.accessToken);
@@ -63,6 +64,22 @@ export const Login = () => {
         navigate("/register");
     };
     
+    const handleForgotPassword = async (e) => {
+        e.preventDefault();
+
+        if(!formData.email){
+            setResponseErr("Enter email to receive reset link.");
+            return;
+        }
+        
+        let { status, msg } = await handleApiToForgotPassword(formData.email);
+        if (status === "Err") {
+            setResponseErr(msg);
+            return;
+        }
+        setResponseErr(null);
+        setSuccessMsg(`Reset link has been sent to ${formData.email}.`)
+    }
     const verifyToken = async (token) => {
         let {status, msg} = await handleApiToVerifyToken(token);
         if(status==="Err")
@@ -99,6 +116,11 @@ export const Login = () => {
             {responseErr && (
                 <div className="text-red-700 font-light font-serif text-base mt-1 mb-4">
                     {responseErr}
+                </div>
+            )}
+            {successMsg && (
+                <div className="text-green-700 font-light font-serif text-base mt-1 mb-4">
+                    {successMsg}
                 </div>
             )}
 
@@ -156,7 +178,7 @@ export const Login = () => {
                         </form>
                         <div
                             className="text-xs text-center mt-2 ml-2 text-teal-700 font-bold hover:cursor-pointer font-sans"
-                            onClick={handleCreateAccount}
+                            onClick={handleForgotPassword}
                         >
                             Forgot your password?
                         </div>

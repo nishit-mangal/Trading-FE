@@ -151,3 +151,25 @@ export async function callApiToResetPassword(data){
 
   return await axios(config);
 }
+
+export async function callApiToForgetPassword(data){
+  let config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: `${localPort}${ApiEndpoints.FORGOT_PASSWORD}`,
+    data
+  };
+
+  return await axios(config);
+}
+
+export async function callApiResetForgetPassword(data){
+  let config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: `${localPort}${ApiEndpoints.RESET_FORGOT_PASSWORD}`,
+    data
+  };
+
+  return await axios(config);
+}

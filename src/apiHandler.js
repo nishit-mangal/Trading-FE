@@ -208,7 +208,7 @@ export async function handleApiToForgotPassword(email){
 export async function handleApiToResetForgotPassword(userId, token, passwordData){
     try{
         let dataObj = {
-            id:userId,
+            userId,
             token,
             newPassword:passwordData.newPassword,
             confirmNewPassword:passwordData.confirmPassword

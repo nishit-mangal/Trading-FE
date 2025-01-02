@@ -66,7 +66,7 @@ export const Login = () => {
     
     const handleForgotPassword = async (e) => {
         e.preventDefault();
-
+        setSuccessMsg();
         if(!formData.email){
             setResponseErr("Enter email to receive reset link.");
             return;
@@ -78,7 +78,7 @@ export const Login = () => {
             return;
         }
         setResponseErr(null);
-        setSuccessMsg(`Reset link has been sent to ${formData.email}.`)
+        setSuccessMsg(`Reset link has been sent to ${formData.email}.`);
     }
     const verifyToken = async (token) => {
         let {status, msg} = await handleApiToVerifyToken(token);

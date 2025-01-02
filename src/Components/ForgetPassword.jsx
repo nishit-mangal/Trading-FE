@@ -22,7 +22,7 @@ export const ForgotPassword = () => {
             return;
         }
         setIsPasswordMatch(true);
-        console.log(formData, token);
+        
         let { status, msg } = await handleApiToResetForgotPassword(userId, token, formData);
         if (status === "Err") {
             setResponseErr(msg);
@@ -62,7 +62,7 @@ export const ForgotPassword = () => {
                             />
                         </div>
 
-                        <div className="form-group mt-2 ml-1">
+                        <div className="form-group mt-2">
                             <label htmlFor="confirmPassword" className="block text-xs font-medium text-gray-500">
                                 Re-enter Password
                             </label>

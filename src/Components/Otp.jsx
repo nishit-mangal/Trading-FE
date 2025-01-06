@@ -2,6 +2,7 @@ import { useState } from "react";
 import { handleApiToResendOTP, handleApiToValidateOTP } from "../apiHandler";
 import { useNavigate } from "react-router-dom";
 import { Logout } from "./Logout";
+import { LOCAL_STORAGE } from "../constants";
 
 export const Otp = ({ email, setResponseErr, page, setVerified }) => {
     const navigate = useNavigate();
@@ -58,12 +59,12 @@ export const Otp = ({ email, setResponseErr, page, setVerified }) => {
             return;
         }
         setResponseErr(null);
-
         if (page === "Signup") {
+            localStorage.clear(LOCAL_STORAGE.USER_LOGIN_TOKEN);
             navigate("/login");
-            //TODO: delete the already exiting account token otherwise it will login to already login account
             return;
         } else if (page === "Login") {
+            localStorage.setItem(LOCAL_STORAGE.USER_LOGIN_TOKEN, msg.loginToken);
             navigate({
                 pathname: "/login/setPin",
                 search: new URLSearchParams({

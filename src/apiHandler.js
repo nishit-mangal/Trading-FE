@@ -97,7 +97,7 @@ export async function handleApiToValidateOTP(email, otp){
         if(!response.data || response.data.responseCode!== HttpCode.SUCCESS){
             return {status:"Err", msg: response.data.responseMessage};
         }
-        return {status:"Success", msg:"Account verified."};
+        return {status:"Success", msg:response.data.data};
     }catch(err){
         console.log(err);
         return {status:"Err", msg: "Some error occured."};

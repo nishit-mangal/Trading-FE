@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 import { handleApiToResetForgotPassword } from "../apiHandler";
+import { LOCAL_STORAGE } from "../constants";
 
 export const ForgotPassword = () => {
     const navigate = useNavigate();
@@ -28,6 +29,7 @@ export const ForgotPassword = () => {
             setResponseErr(msg);
             return;
         }
+        localStorage.clear(LOCAL_STORAGE.USER_LOGIN_TOKEN);
         navigate("/login");
     }
     const handleChange = (e) => {

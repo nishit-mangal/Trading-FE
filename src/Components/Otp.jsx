@@ -60,6 +60,7 @@ export const Otp = ({ email, setResponseErr, page, setVerified }) => {
         }
         setResponseErr(null);
         if (page === "Signup") {
+            document.cookie = "session-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             localStorage.clear(LOCAL_STORAGE.USER_LOGIN_TOKEN);
             navigate("/login");
             return;

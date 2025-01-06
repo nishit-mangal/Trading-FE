@@ -50,13 +50,13 @@ export const ResetPassword = ({setShowPasswordComponent}) => {
 
     return (
          
-        <div className="flex flex-col justify-center items-center min-h-screen fixed top-0 left-0 w-full h-full bg-teal-50 z-10">
+        <div className="flex flex-col justify-center items-center min-h-screen fixed top-0 left-0 w-full h-full bg-teal-50/50 backdrop-blur-sm z-10">
             {responseErr && (
                 <div className="text-red-700 font-light font-serif text-base mt-1 mb-4">
                     {responseErr}
                 </div>
             )}
-            <div className="flex flex-col justify-evenly w-full max-w-sm p-8 bg-white shadow-teal-600 shadow-lg rounded-lg">
+            <div className="flex flex-col justify-evenly w-full max-w-sm p-8 bg-white shadow-teal-600 shadow-lg rounded-lg ">
                 <div className="flex justify-between">
                     <div className="text-2xl font-sans font-semibold">Reset Password</div>
                     <button className="transition-transform duration-150 ease-in-out transform active:scale-90" onClick={handleClose}>

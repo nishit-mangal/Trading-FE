@@ -116,7 +116,6 @@ export const SetPin = () => {
 
     const handleVerifyPin = async (e) => {
         e.preventDefault();
-        // console.log(storeUserData);
         let { status, msg } = await handleApiToVerifyPin(urlEmail, pin);
         if (status === "Err") {
             setResponseErr(msg);

@@ -45,9 +45,10 @@ export async function callApiToFetchOrders(data) {
   return await axios(config);
 }
 
-export async function callApiToGenerateCode(code) {
+export async function callApiToGenerateCode(code, userId) {
   let params = {
-    code
+    code,
+    userId
   }
   let config = {
     method: "get",

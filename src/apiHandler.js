@@ -59,11 +59,11 @@ export async function handleApiToFetchOrders(pageNumber){
     }
 }
 
-export async function handleApiToGenerateAccessCode(code){
+export async function handleApiToGenerateAccessCode(code, userId){
     try{
-        let response = await callApiToGenerateCode(code)
-        if(!response.data || response.data.statusCode!== HttpCode.SUCCESS || !response.data.data){
-            return null
+        let response = await callApiToGenerateCode(code, userId);
+        if(!response.data || response.data.responseCode!== HttpCode.SUCCESS || !response.data.data){
+            return null;
         }
         return response.data.data
     }catch(err){

@@ -5,11 +5,14 @@ import { useEffect, useState } from "react";
 export const GenerateAccessCode = () => {
   const data = useRecoilValue(userData);
   const [hrefUrl, setHrefUrl] = useState();
+  const [redirectUrl, setRedirectUrl] = useState();
 
   useEffect(()=>{
-    setHrefUrl(`https://api.upstox.com/v2/login/authorization/dialog?client_id=${data.apiKey}&redirect_uri=http://localhost:5173/accessToken&state=code`)
-  }, [data]);
-
+    setHrefUrl(`https://api.upstox.com/v2/login/authorization/dialog?client_id=${data.apiKey}&redirect_uri=${redirectUrl}`);
+  }, [data.apiKey, redirectUrl]);
+  useEffect(()=>{
+    setRedirectUrl(`http://localhost:5173/accessToken&state=code?userId=${data.userId}`)
+  }, [data.userId]);
   return (
     <>
       <div className="flex items-center ">

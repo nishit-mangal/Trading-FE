@@ -4,9 +4,10 @@ import { LOCAL_STORAGE } from "../constants";
 
 export const AccessToken = () => {
   const [code, setCode] = useState("");
+  const [userId, setUserId] = useState();
 
   const generateAccessToken = async () => {
-    let response = await handleApiToGenerateAccessCode(code);
+    let response = await handleApiToGenerateAccessCode(code, userId);
     if (!response){
       alert("Access Code Not generated Successfully");
       return;
@@ -16,7 +17,11 @@ export const AccessToken = () => {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     setCode(urlParams.get("code"));
-    if (code !== "") generateAccessToken(code);
+    
+    let fetchedUserId = window.location.search.split("userId=")[1];
+    setUserId(fetchedUserId);
+    
+    if (code !== "") generateAccessToken();
   }, [code]);
   return (
     <>

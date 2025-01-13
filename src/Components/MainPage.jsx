@@ -6,16 +6,43 @@ import { ResetPasswordBtn } from "./ResetPasswordBtn"
 import { Table } from "./Table/Table"
 import { useRecoilValue } from "recoil"
 import { userData } from "../store/atoms/userData"
+import { useEffect, useState } from "react"
+import { handleApiToGetUser } from "../apiHandler";
+import { useSetRecoilState } from "recoil";
+import { ApiPage } from "./ApiPage"
+
 
 export const MainPage = () => {
     const data = useRecoilValue(userData);
-  
+    const setUserData = useSetRecoilState(userData);
+
+    const [showApiPage, setShowApiPage] = useState(false);
+    
+    const getUserData = async () => {
+        let {status, msg} = await handleApiToGetUser(data.userId);
+        if(status==="Err")
+            return;
+        
+        setUserData({
+            ...data,
+            userName: msg?.name,
+            secretsExists: msg?.secretsExists
+        })
+        setShowApiPage(!msg?.secretsExists);
+    } 
+    
+    useEffect(()=>{
+        if(!data.userId)
+            return;
+        getUserData();
+    },[data.userId])
+
     return (
         <>
             <div className="data-class p-2">
                 <div className="flex flex-col justify-center">
                     <div className="p-2 text-xs border-solid border border-gray-300 rounded-lg shadow-lg">
-                        Hi, {data.userEmail.split("@")[0]}
+                        Hi, {data.userName}
                     </div>
                 </div>
                 <BalanceComponent />
@@ -23,6 +50,7 @@ export const MainPage = () => {
                 <GenerateAccessCode />
                 <ResetPasswordBtn />
                 <Logout />
+                {showApiPage && <ApiPage setShowApiPage={setShowApiPage} userId={data.userId}/>}
             </div>
             <Table />
         </>

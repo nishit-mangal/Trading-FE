@@ -4,6 +4,8 @@ export const userData = atom({
     key:"userData",
     default:{
         userId:"",
-        userEmail:""
+        userEmail:"",
+        secretsExists:false,
+        userName:""
     }
 })

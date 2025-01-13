@@ -36,9 +36,6 @@ export async function callApiToTrade(data) {
 }
 
 export async function callApiToFetchOrders(data) {
-  let params = {
-    pageNumber:data
-  }
   let config = {
     method: "get",
     maxBodyLength: Infinity,
@@ -168,6 +165,27 @@ export async function callApiResetForgetPassword(data){
     method: "post",
     maxBodyLength: Infinity,
     url: `${localPort}${ApiEndpoints.RESET_FORGOT_PASSWORD}`,
+    data
+  };
+
+  return await axios(config);
+}
+
+export async function callApiToGetUser(userId){
+  let config = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: `${localPort}${ApiEndpoints.GET_USER}/${userId}`
+  };
+
+  return await axios(config);
+}
+
+export async function callApiToSetSecrets(data){
+  let config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: `${localPort}${ApiEndpoints.SET_API_SECRETS}`,
     data
   };
 

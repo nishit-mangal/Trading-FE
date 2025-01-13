@@ -23,7 +23,9 @@ export const ApiEndpoints = {
   VERIFY_TOKEN:"/authorization/verifyToken",
   RESET_PASSWORD: "/user/resetPassword",
   FORGOT_PASSWORD: "/user/forgotPassword",
-  RESET_FORGOT_PASSWORD: "/user/resetForgotPassword"
+  RESET_FORGOT_PASSWORD: "/user/resetForgotPassword",
+  GET_USER: "/user/getUser",
+  SET_API_SECRETS: "/user/setAPISecrets"
 };
 
 export const OrderStatus = {

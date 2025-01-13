@@ -11,7 +11,6 @@ import { handleApiToGetUser } from "../apiHandler";
 import { useSetRecoilState } from "recoil";
 import { ApiPage } from "./ApiPage"
 
-
 export const MainPage = () => {
     const data = useRecoilValue(userData);
     const setUserData = useSetRecoilState(userData);
@@ -26,7 +25,8 @@ export const MainPage = () => {
         setUserData({
             ...data,
             userName: msg?.name,
-            secretsExists: msg?.secretsExists
+            secretsExists: msg?.secretsExists,
+            apiKey: msg?.apiKey
         })
         setShowApiPage(!msg?.secretsExists);
     } 

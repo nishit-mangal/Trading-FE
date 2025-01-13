@@ -20,7 +20,8 @@ export const AccessToken = () => {
   }, [code]);
   return (
     <>
-      <div>AccessToken Page</div>
+      <div>The access token is generated successfully. You may close this page.</div>
+      <div>Refresh the page.</div>
     </>
   );
 };

@@ -5,7 +5,8 @@ export const userData = atom({
     default:{
         userId:"",
         userEmail:"",
+        userName:"",
         secretsExists:false,
-        userName:""
+        apiKey:""
     }
 })

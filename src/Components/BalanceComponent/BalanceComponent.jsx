@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { handleApiToGetAccountBalance } from "../../apiHandler";
 import "./BalanceComponent.css";
+import { userData } from "../../store/atoms/userData";
+import { useRecoilValue } from "recoil";
 
 export const BalanceComponent = () => {
+  const data = useRecoilValue(userData);    
   const [fundObj, setFundObj] = useState({
     availableFunds: undefined,
     usedFunds: undefined,
@@ -10,7 +13,6 @@ export const BalanceComponent = () => {
   const balanceInfo = async () => {
     let response = await handleApiToGetAccountBalance();
     if (!response) {
-      // alert("Unable to fetch balance. Please try again later");
       return;
     }
     let newObj = {
@@ -20,8 +22,10 @@ export const BalanceComponent = () => {
     setFundObj(newObj);
   };
   useEffect(() => {
+    if(!data.secretsExists)
+      return;    
     balanceInfo();
-  }, []);
+  }, [data.secretsExists]);
   return (
     <div className="balance-container">
       <div>

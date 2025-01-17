@@ -182,6 +182,9 @@ export const Login = () => {
                         >
                             Forgot your password?
                         </div>
+                        <div>
+                            {import.meta.env.VITE_PORT}
+                        </div>
                         <div className="text-xs text-center mt-3">
                             Don't have an account?
                             <span

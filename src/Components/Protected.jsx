@@ -38,6 +38,8 @@ export const Protected = ({ children }) => {
             return;
         }
         let cookie = document.cookie;
+        console.log("cookie", document.cookie);
+        
         if (msg?.hasPin === true && !cookie) {
             setRedirectPath("/login/enterPin");
             setSearchParams(new URLSearchParams({

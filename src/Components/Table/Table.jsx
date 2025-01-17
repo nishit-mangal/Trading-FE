@@ -9,7 +9,14 @@ export const Table = () => {
   const [sendMessage, setSendMessage] = useState("")
   const [webSocket, setWebSocket] = useState(null)
   useEffect(()=>{
-    let socket = new WebSocket('ws://localhost:8000');
+    let socket;
+    try{
+      socket = new WebSocket('ws://finance-backend-xdyo.onrender.com');
+    }catch(err){
+      console.log("Error connecting websocket");
+    }
+    if(!socket)
+      return;
     socket.onopen = () =>{
       console.log("connected to Server");
       setWebSocket(socket)
@@ -17,7 +24,7 @@ export const Table = () => {
     socket.onmessage = (message) =>{
       console.log(message);
       setMessageReceived(message.data ?? "")
-    }      
+    }
   }, [])
   const isShowPlaceOrderModal = useRecoilValue(showPlaceOrderModal);
   return (

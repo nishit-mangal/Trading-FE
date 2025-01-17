@@ -1,4 +1,4 @@
-export const localPort = "http://localhost:8000";
+export const localPort = "https://api-finance.nishit.online";
 
 export const pageSizeToFetchOrders = 5
 

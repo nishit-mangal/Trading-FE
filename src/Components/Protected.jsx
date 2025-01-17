@@ -40,7 +40,7 @@ export const Protected = ({ children }) => {
         let cookie = document.cookie;
         console.log("cookie", document.cookie);
         
-        if (msg?.hasPin === true && !cookie) {
+        if (msg?.hasPin === true && !cookie.includes("session")) {
             setRedirectPath("/login/enterPin");
             setSearchParams(new URLSearchParams({
                 email: msg.userEmail

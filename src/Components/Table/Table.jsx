@@ -11,7 +11,7 @@ export const Table = () => {
   useEffect(()=>{
     let socket;
     try{
-      socket = new WebSocket('ws://finance-backend-xdyo.onrender.com');
+      socket = new WebSocket('ws://api-finance.nishit.online');
     }catch(err){
       console.log("Error connecting websocket");
     }

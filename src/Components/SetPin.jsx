@@ -109,6 +109,13 @@ export const SetPin = () => {
             setPin(Array(4).fill(""));
             return;
         }
+
+        const oneHourFromNow = new Date();
+        oneHourFromNow.setTime(oneHourFromNow.getTime() + 60 * 60 * 1000);
+
+        if(msg && msg.pinToken)
+            document.cookie = `session-token=${msg.pinToken}; expires=${oneHourFromNow.toUTCString()}; path=/;`;
+        
         setResponseErr(null);
         localStorage.setItem(LOCAL_STORAGE.USER_LOGIN_TOKEN, msg.loginToken);
         navigate("/");
@@ -122,6 +129,13 @@ export const SetPin = () => {
             setPin(Array(4).fill(""));
             return;
         }
+        
+        const oneHourFromNow = new Date();
+        oneHourFromNow.setTime(oneHourFromNow.getTime() + 60 * 60 * 1000);
+
+        if(msg && msg.pinToken)
+            document.cookie = `session-token=${msg.pinToken}; expires=${oneHourFromNow.toUTCString()}; path=/;`;
+        
         setResponseErr(null);
         navigate("/");
     }

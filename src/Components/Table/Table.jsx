@@ -3,6 +3,7 @@ import { Stocks } from "../Stocks/Stocks";
 import { PlaceOrder } from "../PlaceOrder/PlaceOrder";
 import { showPlaceOrderModal } from "../../store/atoms/stockData";
 import { useEffect, useState } from "react";
+import { webSocketURL } from "../../constants";
 
 export const Table = () => {
   const [messageRec, setMessageReceived] = useState("")
@@ -11,7 +12,7 @@ export const Table = () => {
   useEffect(()=>{
     let socket;
     try{
-      socket = new WebSocket('ws://api-finance.nishit.online');
+      socket = new WebSocket(webSocketURL);
     }catch(err){
       console.log("Error connecting websocket");
     }

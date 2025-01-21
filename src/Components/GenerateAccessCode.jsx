@@ -9,7 +9,6 @@ export const GenerateAccessCode = () => {
   const [redirectUrl, setRedirectUrl] = useState();
 
   useEffect(()=>{
-    console.log(data);
     setHrefUrl(`https://api.upstox.com/v2/login/authorization/dialog?client_id=${data.apiKey}&redirect_uri=${redirectUrl}`);
   }, [data.apiKey, redirectUrl]);
   useEffect(()=>{

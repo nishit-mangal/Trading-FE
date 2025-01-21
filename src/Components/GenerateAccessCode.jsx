@@ -1,6 +1,7 @@
 import { useRecoilValue } from "recoil";
 import { userData } from "../store/atoms/userData";
 import { useEffect, useState } from "react";
+import { prodURL } from "../constants";
 
 export const GenerateAccessCode = () => {
   const data = useRecoilValue(userData);
@@ -11,7 +12,7 @@ export const GenerateAccessCode = () => {
     setHrefUrl(`https://api.upstox.com/v2/login/authorization/dialog?client_id=${data.apiKey}&redirect_uri=${redirectUrl}`);
   }, [data.apiKey, redirectUrl]);
   useEffect(()=>{
-    setRedirectUrl(`http://localhost:5173/accessToken&state=code?userId=${data.userId}`)
+    setRedirectUrl(`${prodURL}/accessToken&state=code?userId=${data.userId}`)
   }, [data.userId]);
   return (
     <>

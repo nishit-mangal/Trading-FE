@@ -1,5 +1,5 @@
 export const localPort = "https://api-finance.nishit.online";
-
+export const prodURL = "https://finance.nishit.online"
 export const pageSizeToFetchOrders = 5
 
 export const HttpCode = {

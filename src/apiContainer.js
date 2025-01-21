@@ -192,3 +192,18 @@ export async function callApiToSetSecrets(data){
 
   return await axios(config);
 }
+
+export async function callApiToValidateGoogleCode(code){
+  let params = {
+    code
+  }
+  
+  let config = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: `${localPort}${ApiEndpoints.GOOGLE_CODE_AUTH}`,
+    params
+  };
+
+  return await axios(config);
+}

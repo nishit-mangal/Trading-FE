@@ -8,38 +8,46 @@ import { SetPin } from "./Components/SetPin";
 import { MainPage } from "./Components/MainPage";
 import { RecoilRoot } from "recoil";
 import { ForgotPassword } from "./Components/ForgetPassword";
+import { PageNotFound } from "./Components/PageNotFound.jsx";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
+
+const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || ""
 const LoginRoutes = () => {
-  return (
-    <Outlet />
-  );
+  return <Outlet />;
 };
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<RegisterUser />} />
-          <Route path="/accessToken" element={<AccessToken />} />
-          <Route path="/forgotPassword/:userId/:token" element = {<ForgotPassword />} />
-          <Route path="/login" element={<LoginRoutes />}>
-            <Route path="setPin" element={<SetPin />} />
-            <Route path="enterPin" element={<SetPin />} />
-          </Route>
-          <Route
-            path="/"
-            element={
-              <RecoilRoot>
-                <Protected>
-                  <MainPage />
-                </Protected>
-              </RecoilRoot>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
+      <GoogleOAuthProvider clientId={googleClientId}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<RegisterUser />} />
+            <Route path="/accessToken" element={<AccessToken />} />
+            <Route
+              path="/forgotPassword/:userId/:token"
+              element={<ForgotPassword />}
+            />
+            <Route path="/login" element={<LoginRoutes />}>
+              <Route path="setPin" element={<SetPin />} />
+              <Route path="enterPin" element={<SetPin />} />
+            </Route>
+            <Route
+              path="/"
+              element={
+                <RecoilRoot>
+                  <Protected>
+                    <MainPage />
+                  </Protected>
+                </RecoilRoot>
+              }
+            />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </GoogleOAuthProvider>
     </>
   );
 }

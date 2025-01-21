@@ -1,4 +1,4 @@
-import { callApiResetForgetPassword, callApiToFetchOrders, callApiToForgetPassword, callApiToGenerateCode, callApiToGetAccountBalance, callApiToGetPortfolio, callApiToGetUser, callApiToLogin, callApiToRegisterUser, callApiToResendOTP, callApiToResetPassword, callApiToSetPin, callApiToSetSecrets, callApiToTrade, callApiToVerifyOTP, callApiToVerifyPin, callApiToVerifyToken } from "./apiContainer";
+import { callApiResetForgetPassword, callApiToFetchOrders, callApiToForgetPassword, callApiToGenerateCode, callApiToGetAccountBalance, callApiToGetPortfolio, callApiToGetUser, callApiToLogin, callApiToRegisterUser, callApiToResendOTP, callApiToResetPassword, callApiToSetPin, callApiToSetSecrets, callApiToTrade, callApiToValidateGoogleCode, callApiToVerifyOTP, callApiToVerifyPin, callApiToVerifyToken } from "./apiContainer";
 import { HttpCode } from "./constants";
 
 export async function handleApiToGetAccountBalance(){
@@ -244,6 +244,19 @@ export async function handleApiToSetSecret(data){
             return {status:"Err", msg: response.data.responseMessage};
         }
         return {status:"Success", msg:response.data.responseMessage};
+    }catch(err){
+        console.log(err);
+        return {status:"Err", msg: "Some error occured."};
+    }
+}
+
+export async function handleApiToAuthenticateGoogleCode(code){
+    try{
+        let response = await callApiToValidateGoogleCode(code);
+        if(!response.data || response.data.responseCode!== HttpCode.SUCCESS){
+            return {status:"Err", msg: response.data.responseMessage};
+        }
+        return {status:"Success", msg:response.data.data};
     }catch(err){
         console.log(err);
         return {status:"Err", msg: "Some error occured."};

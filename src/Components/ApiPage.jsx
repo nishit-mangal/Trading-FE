@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { handleApiToSetSecret } from "../apiHandler";
+import { localPort } from "../constants";
 
 export const ApiPage = ({ setShowApiPage, userId }) => {
     // const [isDisabled, setIsDisabled] = useState(false);
@@ -50,7 +51,7 @@ export const ApiPage = ({ setShowApiPage, userId }) => {
                     <span className="text-sm text-red-700 font-bold"> Important Note: </span>
                     <div>
                         <span>You must set this as your redirect URL -  </span>
-                        <span className="text-black text-sm font-extrabold">http://localhost:5173/accessToken</span>
+                        <span className="text-black text-sm font-extrabold">{localPort}/accessToken</span>
                     </div>                     
                 </div>
 

@@ -1,15 +1,15 @@
 .orderHisory-button{
-    margin: 2rem 0;
-    padding: 0 1rem;
-    font-size: 16px;
+    padding: 0.5rem 1.25rem;
+    font-size: 14px;
     text-decoration: none;
-    background-color: #007bff; /* Blue color, you can change it to fit your design */
-    color: #ffffff; /* White text color */
+    background-color: #14B8A6; /* Blue color, you can change it to fit your design */
+    color: black; /* White text color */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-weight: 500;
 }
 .orderHisory-button:hover {
-    background-color: #0056b3; /* Darker shade of blue on hover */
+    background-color: rgb(13 148 136); /* Darker shade of blue on hover */
 }

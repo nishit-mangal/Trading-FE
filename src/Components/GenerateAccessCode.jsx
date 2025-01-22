@@ -18,7 +18,7 @@ export const GenerateAccessCode = () => {
     <>
       <div className="flex items-center ">
         <a
-          className="bg-blue-500 text-white pr-5 pl-5 pt-2 pb-2 rounded-md hover:bg-blue-600 hover:cursor-pointer"
+          className="bg-teal-500 pr-5 pl-5 pt-2 pb-2 rounded-md hover:bg-teal-600 hover:cursor-pointer text-sm font-medium"
           href={hrefUrl}
           target="_blank"
           rel="noopener noreferrer"

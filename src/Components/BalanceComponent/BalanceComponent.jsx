@@ -27,13 +27,13 @@ export const BalanceComponent = () => {
     balanceInfo();
   }, [data.secretsExists]);
   return (
-    <div className="balance-container">
+    <div className="balance-container items-center py-2 text-sm">
       <div>
         <div className="balance-info">
           <span className="balance-label">Available fund:</span>
           <span className="balance-amount">{fundObj.availableFunds}</span>
         </div>
-        <div className="balance-info">
+        <div>
           <span className="balance-label">Used Amount:</span>
           <span className="balance-amount">{fundObj.usedFunds}</span>
         </div>

@@ -139,7 +139,7 @@ export const SetPin = () => {
                     {responseErr}
                 </div>
             )}
-            <div className="flex flex-col justify-evenly w-full max-w-sm p-8 bg-white shadow-teal-600 shadow-lg rounded-lg">
+            <div className={`flex flex-col justify-evenly w-full ${showOTP ? 'max-w-sm' : 'max-w-xs'}  p-8 bg-white shadow-teal-600 shadow-lg rounded-lg`}>
                 {showOTP ? <Otp email={urlEmail} page="SetPin" setResponseErr={setResponseErr} pin={pin} /> : <>
                     <div className="flex justify-between">
                         <div>

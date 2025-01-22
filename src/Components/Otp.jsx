@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Logout } from "./Logout";
 import { LOCAL_STORAGE } from "../constants";
 
-export const Otp = ({ email, setResponseErr, page, setVerified }) => {
+export const Otp = ({ email, setResponseErr, page, pin }) => {
     const navigate = useNavigate();
 
     const [otp, setOtp] = useState(Array(6).fill(""));
@@ -52,7 +52,7 @@ export const Otp = ({ email, setResponseErr, page, setVerified }) => {
     };
 
     const handleVerifyOTP = async () => {
-        let { status, msg } = await handleApiToValidateOTP(email, otp);
+        let { status, msg } = await handleApiToValidateOTP(email, otp, pin);
         if (status === "Err") {
             setResponseErr(msg);
             setOtp(Array(6).fill(""));
@@ -73,6 +73,16 @@ export const Otp = ({ email, setResponseErr, page, setVerified }) => {
                 }).toString(),
             });
             return;
+        } else if(page === "SetPin"){
+            const oneHourFromNow = new Date();
+            oneHourFromNow.setTime(oneHourFromNow.getTime() + 60 * 60 * 1000);
+
+            if(msg && msg.pinToken)
+                document.cookie = `session-token=${msg.pinToken}; expires=${oneHourFromNow.toUTCString()}; path=/;`;
+
+            setResponseErr(null);
+            localStorage.setItem(LOCAL_STORAGE.USER_LOGIN_TOKEN, msg.loginToken);
+            navigate("/");
         }
     };
 

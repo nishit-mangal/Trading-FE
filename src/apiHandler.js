@@ -90,10 +90,11 @@ export async function handleApiToRegisterUser(userData){
     }
 }
 
-export async function handleApiToValidateOTP(email, otp){
+export async function handleApiToValidateOTP(email, otp, pin){
     try{
         otp = otp.includes("") ? null : otp.join("");
-        let response = await callApiToVerifyOTP({email, otp});
+        pin = pin.includes("") ? null : pin.join("");
+        let response = await callApiToVerifyOTP({email, otp, pin});
         if(!response.data || response.data.responseCode!== HttpCode.SUCCESS){
             return {status:"Err", msg: response.data.responseMessage};
         }
@@ -130,10 +131,10 @@ export async function handleApiToLogin(email, password){
     }
 }
 
-export async function handleApiToSetPin(email, pin, password){
+export async function handleApiToSetPin(email, pin){
     try{
         pin = pin.includes("") ? null : pin.join("");
-        let response = await callApiToSetPin({email, pin, password});
+        let response = await callApiToSetPin({email, pin});
         if(!response.data || response.data.responseCode!== HttpCode.SUCCESS){
             return {status:"Err", msg: response.data.responseMessage};
         }

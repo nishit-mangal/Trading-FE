@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { handleApiToSetSecret } from "../apiHandler";
 import { localPort } from "../constants";
+import { Logout } from "./Logout";
 
 export const ApiPage = ({ setShowApiPage, userId }) => {
-    // const [isDisabled, setIsDisabled] = useState(false);
     const [responseErr, setResponseErr] = useState();    
     const [formData, setFormData] = useState({
         apiSecret: "",
@@ -45,6 +45,7 @@ export const ApiPage = ({ setShowApiPage, userId }) => {
             <div className="flex flex-col justify-evenly w-full max-w-sm p-8 bg-white shadow-teal-600 shadow-lg rounded-lg ">
                 <div className="flex justify-between">
                     <div className="text-2xl font-sans font-semibold">Enter API details</div>
+                    <Logout />
                 </div>
 
                 <div className="text-xs font-serif text-gray-700 mt-2">

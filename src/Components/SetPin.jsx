@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Logout } from "./Logout";
 import { LOCAL_STORAGE } from "../constants";
 import { Otp } from "./Otp";
+import logo from "../assets/NiVESHHOR.png"
 
 export const SetPin = () => {
     const [pin, setPin] = useState(Array(4).fill(""));
@@ -134,6 +135,7 @@ export const SetPin = () => {
     return (
 
         <div className="flex flex-col justify-center items-center min-h-screen bg-teal-50">
+            <img className="rounded-md mb-6" src={logo} alt="Logo" width={150}></img>
             {responseErr && (
                 <div className="text-red-700 font-light font-serif text-base mt-1 mb-4">
                     {responseErr}

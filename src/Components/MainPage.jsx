@@ -10,6 +10,7 @@ import { useEffect, useState } from "react"
 import { handleApiToGetUser } from "../apiHandler";
 import { useSetRecoilState } from "recoil";
 import { ApiPage } from "./ApiPage"
+import logo from "../assets/NiVESHHOR.png"
 
 export const MainPage = () => {
     const data = useRecoilValue(userData);
@@ -40,6 +41,7 @@ export const MainPage = () => {
     return (
         <>
             <div className="data-class p-2">
+                <img className="rounded-md mb-6" src={logo} alt="Logo" width={150}></img>
                 <div className="flex flex-col justify-center">
                     <div className="p-2 text-xs border-solid border border-gray-300 rounded-lg shadow-lg">
                         Hi, {data.userName}

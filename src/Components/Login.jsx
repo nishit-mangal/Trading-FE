@@ -4,7 +4,8 @@ import { handleApiToAuthenticateGoogleCode, handleApiToForgotPassword, handleApi
 import { Otp } from "./Otp";
 import { LOCAL_STORAGE, prodURL } from "../constants";
 import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
-
+import googleImg  from "../assets/google.jpg"
+import logo from "../assets/NiVESHHOR.png"
 export const Login = () => {
     const navigate = useNavigate();
 
@@ -136,6 +137,7 @@ export const Login = () => {
 
     return (
         <div className="flex flex-col justify-center items-center min-h-screen bg-teal-50">
+            <img className="rounded-md mb-6" src={logo} alt="Logout" width={150}></img>
             {responseErr && (
                 <div className="text-red-700 font-light font-serif text-base mt-1 mb-4">
                     {responseErr}
@@ -151,12 +153,13 @@ export const Login = () => {
                     {isAccountVerified === -1 && (
                         <div>
                             <div className="text-2xl font-sans font-semibold">Log in</div>
-                            <button className="mt-6 mb-4 h-8 w-full px-4 bg-teal-600 text-white text-sm font-semibold rounded-md shadow hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50" onClick={loginViaGoogle}>
-                                Login with Google
+                            <button className="flex items-center mt-6 mb-4 h-10 w-full px-4 bg-teal-600 text-white text-base font-semibold rounded-md shadow hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50" onClick={loginViaGoogle}>
+                                <img className="rounded-sm mr-2" src={googleImg} alt="Google" height={25} width={25}></img>
+                                <div className="text-center w-full">Login with Google</div>
                             </button>
                             <hr></hr>
 
-                            <form onSubmit={handleSubmit} className="pt-2" method="post">
+                            <form onSubmit={handleSubmit} className="pt-1" method="post">
                                 {/* Email Input */}
                                 <div className="form-group mt-2">
                                     <label
@@ -171,13 +174,13 @@ export const Login = () => {
                                         name="email"
                                         value={formData.email}
                                         onChange={handleChange}
-                                        className="font-serif text-xs mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500"
+                                        className="font-serif text-xs mt-1 block w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500"
                                         required
                                     />
                                 </div>
 
                                 {/* Password Input */}
-                                <div className="form-group mt-2 mr-1">
+                                <div className="form-group mt-1 mr-1">
                                     <label
                                         htmlFor="password"
                                         className="block text-xs font-medium text-gray-500"
@@ -190,7 +193,7 @@ export const Login = () => {
                                         name="password"
                                         value={formData.password}
                                         onChange={handleChange}
-                                        className="text-xs mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500"
+                                        className="text-xs mt-1 block w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500"
                                         required
                                     />
                                 </div>
@@ -204,7 +207,7 @@ export const Login = () => {
                                 {/* Submit Button */}
                                 <button
                                     type="submit"
-                                    className="mt-6 h-8 w-full px-4 bg-teal-600 text-white text-sm font-semibold rounded-md shadow hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50"
+                                    className="mt-4 h-8 w-full px-4 bg-teal-600 text-white text-sm font-semibold rounded-md shadow hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50"
                                 >
                                     Login
                                 </button>

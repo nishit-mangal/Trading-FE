@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { handleApiToGenerateAccessCode } from "../apiHandler";
-import { LOCAL_STORAGE } from "../constants";
+import { LOCAL_STORAGE, prodURL } from "../constants";
 
 export const AccessToken = () => {
   const [code, setCode] = useState("");
@@ -12,7 +12,8 @@ export const AccessToken = () => {
       alert("Access Code Not generated Successfully");
       return;
     } 
-    localStorage.setItem(LOCAL_STORAGE.ACCESS_TOKEN, response)
+    localStorage.setItem(LOCAL_STORAGE.ACCESS_TOKEN, response);
+    window.location.href = prodURL;
   };
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);

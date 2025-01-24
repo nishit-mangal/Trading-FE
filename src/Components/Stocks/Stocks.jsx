@@ -10,7 +10,7 @@ export const Stocks = () => {
   const data = useRecoilValue(userData);    
   const setStockData = useSetRecoilState(stockData);
   const setShowPlaceOrderModal = useSetRecoilState(showPlaceOrderModal)
-  
+  const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
     if(!data.secretsExists)
       return;
@@ -18,11 +18,12 @@ export const Stocks = () => {
   }, [data.secretsExists]);
 
   const portfolio = async () => {
+    setIsLoading(true);
     let response = await handleApiToGetPortfolio();
-    if (!response) {
-      // alert("Unable to fetch portfolio. Please try again later");
+    setIsLoading(false);
+    if (!response)
       return;
-    }
+    
     setTableData(response);
   };
 
@@ -76,6 +77,7 @@ export const Stocks = () => {
         <div className="flex flex-col gap-4 items-center my-16">
           <div className="font-bold text-xl">Empty Data</div>
           <div className="font-medium text-base">Please <i className="mx-2">Generate Access Token</i> from the button given above</div>
+          {!!isLoading && <div className="items-center my-2 font-light text-xs">Loading...</div> }
         </div>
       }
     </>

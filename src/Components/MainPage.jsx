@@ -40,20 +40,19 @@ export const MainPage = () => {
 
     return (
         <>
-            <div className="data-class p-2">
-                <img className="rounded-md align-center" src={logo} alt="Logo" width={150}></img>
-                <div className="flex flex-col justify-center">
-                    <div className="p-2 text-xs border-solid border border-gray-300 rounded-lg shadow-lg">
-                        Hi, {data.userName}
-                    </div>
-                </div>
-                <BalanceComponent />
+            <div className="data-class p-2 items-center">
+                <img className="rounded-md" src={logo} alt="Logo" width={100}></img>
+                <div className="font-sans font-bold text-lg"> {data.userName} </div>
+                {/* <BalanceComponent /> */}
                 {/* <OrderHistoryBtn /> */}
-                <GenerateAccessCode />
-                <ResetPasswordBtn />
-                <Logout />
+                <div className="flex w-80 justify-between">
+                    <GenerateAccessCode />
+                    <ResetPasswordBtn />
+                    <Logout />
+                </div>
                 {showApiPage && <ApiPage setShowApiPage={setShowApiPage} userId={data.userId}/>}
             </div>
+            <hr></hr>
             <Table />
         </>
     )

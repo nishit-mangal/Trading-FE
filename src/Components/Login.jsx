@@ -137,7 +137,7 @@ export const Login = () => {
 
     return (
         <div className="flex flex-col justify-center items-center min-h-screen bg-teal-50">
-            <img className="rounded-md mb-6" src={logo} alt="Logout" width={150}></img>
+            <img className="rounded-md my-2" src={logo} alt="Logout" width={150}></img>
             {responseErr && (
                 <div className="text-red-700 font-light font-serif text-base mt-1 mb-4">
                     {responseErr}

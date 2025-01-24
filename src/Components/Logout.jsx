@@ -10,7 +10,7 @@ export const Logout = () =>{
         navigate("/login");
     }
     return (
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center px-2">
             <button className="transition-transform duration-150 ease-in-out transform active:scale-90" onClick={handleLogout}>
                 <img src={logoutImage} alt="Logout" height={20} width={20} className="transition-transform duration-150 ease-in-out transform hover:scale-110"></img>
             </button>

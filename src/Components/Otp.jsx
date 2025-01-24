@@ -102,6 +102,9 @@ export const Otp = ({ email, setResponseErr, page, pin }) => {
             <div className="text-xs font-serif text-gray-500">
                 recieved on: <span className="font-bold text-teal-800">{email}</span>
             </div>
+            <div className="text-xs font-normal text-gray-500 mt-1">
+                This may take few minutes...
+            </div>
             <div className="flex justify-center space-x-2 mt-5">
                 {otp.map((digit, index) => (
                     <input

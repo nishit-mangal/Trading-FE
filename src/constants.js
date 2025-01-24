@@ -1,11 +1,11 @@
-export const localPort = "http://localhost:8000";
-// export const localPort = "https://api-finance.nishit.online";
+// export const localPort = "http://localhost:8000";
+export const localPort = "https://api-finance.nishit.online";
 
-export const prodURL = "http://localhost:5173"
-// export const prodURL = "https://finance.nishit.online";
+// export const prodURL = "http://localhost:5173"
+export const prodURL = "https://finance.nishit.online";
 
-export const webSocketURL = "ws://localhost:8000";
-// export const webSocketURL = "wss://api-finance.nishit.online";
+// export const webSocketURL = "ws://localhost:8000";
+export const webSocketURL = "wss://api-finance.nishit.online";
 
 export const pageSizeToFetchOrders = 5
 

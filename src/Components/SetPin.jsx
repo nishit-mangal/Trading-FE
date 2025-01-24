@@ -20,6 +20,7 @@ export const SetPin = () => {
         setUrlEmail(urlSearchParams.get("email"));
         if (urlParams.includes("enterPin")) setPageType("enterPin");
         else setPageType("setPin");
+        setPin(Array(4).fill(""));
     }, [window.location.pathname]);
 
     useEffect(() => {
@@ -142,50 +143,53 @@ export const SetPin = () => {
                 </div>
             )}
             <div className={`flex flex-col justify-evenly w-full ${showOTP ? 'max-w-sm' : 'max-w-xs'}  p-8 bg-white shadow-teal-600 shadow-lg rounded-lg`}>
-                {showOTP ? <Otp email={urlEmail} page="SetPin" setResponseErr={setResponseErr} pin={pin} /> : <>
-                    <div className="flex justify-between">
-                        <div>
-                            <div className="text-2xl font-sans font-semibold">
-                                {pageType === "setPin" ? "Set Pin" : "Enter Pin"}{" "}
+                {showOTP ? 
+                    <Otp email={urlEmail} page="SetPin" setResponseErr={setResponseErr} pin={pin} /> : 
+                    <>
+                        <div className="flex justify-between">
+                            <div>
+                                <div className="text-2xl font-sans font-semibold">
+                                    {pageType === "setPin" ? "Set Pin" : "Enter Pin"}{" "}
+                                </div>
+                                <div className="text-xs font-serif text-gray-500">
+                                    for 2-Factor-Authentication
+                                </div>
                             </div>
-                            <div className="text-xs font-serif text-gray-500">
-                                for 2-Factor-Authentication
+                            <Logout />
+                        </div>
+                        <form onSubmit={pageType === "setPin" ? handleSetPin : handleVerifyPin} className="pt-2" method="post">
+                            <div className="flex justify-center space-x-4 mt-5 mb-3">
+                                {pin.map((digit, index) => (
+                                    <input
+                                        key={index}
+                                        id={`pin-input-${index}`}
+                                        type="text"
+                                        maxLength={1}
+                                        value={digit}
+                                        onChange={(e) => handlePinChange(e.target.value, index)}
+                                        onKeyDown={(e) => handleKeyDown(e, index)}
+                                        onPaste={handlePaste}
+                                        className="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-md focus:outline-none focus:border-teal-500"
+                                    />
+                                ))}
                             </div>
-                        </div>
-                        <Logout />
-                    </div>
-                    <form onSubmit={pageType === "setPin" ? handleSetPin : handleVerifyPin} className="pt-2" method="post">
-                        <div className="flex justify-center space-x-4 mt-5 mb-3">
-                            {pin.map((digit, index) => (
-                                <input
-                                    key={index}
-                                    id={`pin-input-${index}`}
-                                    type="text"
-                                    maxLength={1}
-                                    value={digit}
-                                    onChange={(e) => handlePinChange(e.target.value, index)}
-                                    onKeyDown={(e) => handleKeyDown(e, index)}
-                                    onPaste={handlePaste}
-                                    className="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-md focus:outline-none focus:border-teal-500"
-                                />
-                            ))}
-                        </div>
-                        <button
-                            type="submit"
-                            className="mt-6 h-8 w-full px-4 bg-teal-600 text-white text-sm font-semibold rounded-md shadow hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50"
-                        >
-                            {pageType === "setPin" ? "Set Pin" : "Verify Pin"}
-                        </button>
-                    </form>
-                    {pageType === "enterPin" && (
-                        <div
-                            className="text-xs text-center mt-2 ml-2 text-teal-700 font-bold hover:cursor-pointer font-sans"
-                            onClick={handleForgotPin}
-                        >
-                            Forgot PIN?
-                        </div>
-                    )}
-                </>}
+                            <button
+                                type="submit"
+                                className="mt-6 h-8 w-full px-4 bg-teal-600 text-white text-sm font-semibold rounded-md shadow hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50"
+                            >
+                                {pageType === "setPin" ? "Set Pin" : "Verify Pin"}
+                            </button>
+                        </form>
+                        {pageType === "enterPin" && (
+                            <div
+                                className="text-xs text-center mt-2 ml-2 text-teal-700 font-bold hover:cursor-pointer font-sans"
+                                onClick={handleForgotPin}
+                            >
+                                Forgot PIN?
+                            </div>
+                        )}
+                    </>
+                }
             </div>
         </div>
     );

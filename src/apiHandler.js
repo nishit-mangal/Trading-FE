@@ -105,9 +105,9 @@ export async function handleApiToValidateOTP(email, otp, pin){
     }
 }
 
-export async function handleApiToResendOTP(email){
+export async function handleApiToResendOTP(email, type){
     try{
-        let response = await callApiToResendOTP({email});
+        let response = await callApiToResendOTP({email, type});
         if(!response.data || response.data.responseCode!== HttpCode.SUCCESS){
             return {status:"Err", msg: response.data.responseMessage};
         }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { handleApiToResendOTP, handleApiToValidateOTP } from "../apiHandler";
 import { useNavigate } from "react-router-dom";
 import { Logout } from "./Logout";
-import { LOCAL_STORAGE } from "../constants";
+import { LOCAL_STORAGE, OTP_TYPES } from "../constants";
 
 export const Otp = ({ email, setResponseErr, page, pin }) => {
     const navigate = useNavigate();
@@ -42,7 +42,8 @@ export const Otp = ({ email, setResponseErr, page, pin }) => {
     };
 
     const handleResendOTP = async () => {
-        let { status, msg } = await handleApiToResendOTP(email);
+        let type = page === "SetPin" ? OTP_TYPES.SET_PIN : OTP_TYPES.EMAIL_VERIFICATION;
+        let { status, msg } = await handleApiToResendOTP(email, type);
         if (status === "Err") {
             setResponseErr(msg);
             setOtp(Array(6).fill(""));

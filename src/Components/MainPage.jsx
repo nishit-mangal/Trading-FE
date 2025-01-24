@@ -48,7 +48,7 @@ export const MainPage = () => {
                     </div>
                 </div>
                 <BalanceComponent />
-                <OrderHistoryBtn />
+                {/* <OrderHistoryBtn /> */}
                 <GenerateAccessCode />
                 <ResetPasswordBtn />
                 <Logout />

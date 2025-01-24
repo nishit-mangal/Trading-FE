@@ -36,6 +36,11 @@ export const ApiEndpoints = {
   GOOGLE_CODE_AUTH: "/authorization/googleAuth"
 };
 
+export const OTP_TYPES = {
+  EMAIL_VERIFICATION: "EMAIL_VERIFICATION",
+  SET_PIN: "SET_PIN"
+}
+
 export const OrderStatus = {
   COMPLETE: "complete",
 };

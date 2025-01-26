@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build --mode production",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview --host"
   },
   "dependencies": {
     "@react-oauth/google": "^0.12.1",

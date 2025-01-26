@@ -10,6 +10,7 @@ export const Login = () => {
     const navigate = useNavigate();
 
     const [isAccountVerified, setIsAccountVerified] = useState(-1);
+    const [isLoading, setIsLoading] = useState(false);
     const [responseErr, setResponseErr] = useState();
     const [successMsg, setSuccessMsg] = useState();
     const [formData, setFormData] = useState({
@@ -109,7 +110,9 @@ export const Login = () => {
         try{
             if(!authResult.code)
                 throw 'Code not found';
+            setIsLoading(true);
             let {status, msg} = await handleApiToAuthenticateGoogleCode(authResult.code);
+            setIsLoading(false);
             if(status==="Err"){
                 setResponseErr(msg);
                 return;
@@ -147,6 +150,9 @@ export const Login = () => {
                 <div className="text-green-700 font-light font-serif text-base mt-1 mb-4">
                     {successMsg}
                 </div>
+            )}
+            { isLoading && (
+                <div className="items-center my-2 font-light text-xs">Loading...</div>
             )}
             <GoogleOAuthProvider>
                 <div className="flex flex-col justify-evenly w-full max-w-sm p-8 bg-white shadow-teal-600 shadow-lg rounded-lg">

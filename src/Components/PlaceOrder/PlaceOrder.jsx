@@ -4,6 +4,7 @@ import { OrderStatus } from "../../constants";
 import "./PlaceOrder.css";
 import { useEffect, useState } from "react";
 import { showPlaceOrderModal, stockData } from "../../store/atoms/stockData";
+import closeImg from "../../assets/close.png"
 
 export const PlaceOrder = ( {webSocket, messageRec} ) => {
   const data = useRecoilValue(stockData);
@@ -47,7 +48,7 @@ export const PlaceOrder = ( {webSocket, messageRec} ) => {
       <div className="place-order-box">
         <div className="flex justify-end">
           <button onClick={cancelButton} >
-            <img src="src\assets\close.png" alt="Cancel" height={15} width={15}></img>
+            <img src={closeImg} alt="Cancel" height={15} width={15}></img>
           </button>
         </div>
         <p className="mt-2">
@@ -85,11 +86,11 @@ export const PlaceOrder = ( {webSocket, messageRec} ) => {
             <div>{messageRec ?? "NA"}</div>
           </div>
         </div>
-        <div className="button-container">
-          <div className="buy-button" onClick={() => tradeButton("BUY")}>
+        <div className="flex justify-around mt-4">
+          <div className="p-2 min-w-32 PX-10 text-center bg-teal-600 rounded-3xl hover:cursor-pointer" onClick={() => tradeButton("BUY")}>
             Buy
           </div>
-          <div className="sell-button" onClick={() => tradeButton("SELL")}>
+          <div className="p-2 min-w-32 px-10 text-center bg-red-400 rounded-3xl hover:cursor-pointer" onClick={() => tradeButton("SELL")}>
             Sell
           </div>
         </div>

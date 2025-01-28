@@ -4,6 +4,7 @@ import { handleApiToGetPortfolio } from "../../apiHandler";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { showPlaceOrderModal, stockData } from "../../store/atoms/stockData";
 import { userData } from "../../store/atoms/userData";
+import { defaultHoldingData } from "../../constants";
 
 export const Stocks = () => {
   const [tableData, setTableData] = useState([]);
@@ -19,63 +20,7 @@ export const Stocks = () => {
 
   const portfolio = async () => {
     if(data.userEmail==="sample4@gmailsdf.asd"){
-      setTableData([
-        {
-            "companyName": "ADANI GREEN ENERGY LTD",
-            "tradingSymbol": "ADANIGREEN",
-            "profit": 1245.3,
-            "quantity": 4,
-            "averagePrice": 700.77,
-            "closingPrice": 1012.1,
-            "instrumentToken": "NSE_EQ|INE364U01010",
-            "oneYearMax": 2070.55,
-            "percentFromMax": -52
-        },
-        {
-            "companyName": "JIO FIN SERVICES LTD",
-            "tradingSymbol": "JIOFIN",
-            "profit": 1344.14,
-            "quantity": 9,
-            "averagePrice": 95.1,
-            "closingPrice": 244.45,
-            "instrumentToken": "NSE_EQ|INE758E01017",
-            "oneYearMax": 387.95,
-            "percentFromMax": -37
-        },
-        {
-            "companyName": "ADANI PORT & SEZ LTD",
-            "tradingSymbol": "ADANIPORTS",
-            "profit": 5681.8,
-            "quantity": 10,
-            "averagePrice": 525.97,
-            "closingPrice": 1094.15,
-            "instrumentToken": "NSE_EQ|INE742F01042",
-            "oneYearMax": 1590.15,
-            "percentFromMax": -32
-        },
-        {
-            "companyName": "MONTE CARLO FASHIONS LTD.",
-            "tradingSymbol": "MONTECARLO",
-            "profit": 2148.5,
-            "quantity": 14,
-            "averagePrice": 518.94,
-            "closingPrice": 672.4,
-            "instrumentToken": "NSE_EQ|INE950M01013",
-            "oneYearMax": 952.2,
-            "percentFromMax": -30
-        },
-        {
-            "companyName": "APOLLO TYRES LTD",
-            "tradingSymbol": "APOLLOTYRE",
-            "profit": 4531.55,
-            "quantity": 20,
-            "averagePrice": 196.82,
-            "closingPrice": 423.4,
-            "instrumentToken": "NSE_EQ|INE438A01022",
-            "oneYearMax": 564.25,
-            "percentFromMax": -25
-        }
-      ])
+      setTableData(defaultHoldingData)
       return;
     }
     setIsLoading(true);
@@ -94,7 +39,7 @@ export const Stocks = () => {
 
   return (
     <>
-      <div className="table-container">
+      <div className="table-container mx-4">
         <table>
           <thead>
             <tr>

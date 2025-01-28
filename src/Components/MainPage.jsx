@@ -42,10 +42,10 @@ export const MainPage = () => {
         <>
             <div className="data-class p-2 items-center">
                 <img className="rounded-md" src={logo} alt="Logo" width={100}></img>
-                <div className="font-sans font-bold text-lg"> {data.userName} </div>
+                <div className="font-serif font-bold text-xl"> {data.userName} </div>
                 {/* <BalanceComponent /> */}
-                {/* <OrderHistoryBtn /> */}
-                <div className="flex w-80 justify-between">
+                <div className="flex w-[280px] justify-between">
+                    <OrderHistoryBtn />
                     <GenerateAccessCode />
                     <ResetPasswordBtn />
                     <Logout />

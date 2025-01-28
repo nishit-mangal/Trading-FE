@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { options, pageSizeToFetchOrders } from "../../constants";
 import "./OrderHistory.css";
 import { handleApiToFetchOrders } from "../../apiHandler";
+import closeImg from "../../assets/close.png"
 
 export const OrderHistory = ({ setShowOrderHistory }) => {
   const [ordersData, setOrdersData] = useState([]);
@@ -65,10 +66,11 @@ export const OrderHistory = ({ setShowOrderHistory }) => {
   return (
     <div className="orderHistoryContainer">
       <div className="orderContainer" ref={orderHistoryContainerRef}>
-        <button className="cancel-button" onClick={cancelButton}>
-          Close
-        </button>
-        <div className="order-row headerRow">
+        <div className="flex justify-end hover:cursor-pointer" onClick={cancelButton}>
+          <img src={closeImg} alt="Cancel" height={15} width={15}></img>
+        </div>
+        
+        <div className="flex my-4 py-2 rounded-xl font-medium font-sans items-center text-base bg-[rgba(20,150,150,0.2)]">
           <div className="col-1"> Order id</div>
           <div className="col-2"> Trading Symbol</div>
           <div className="col-2"> Quantity</div>

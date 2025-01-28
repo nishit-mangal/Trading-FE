@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <GoogleOAuthProvider clientId={googleClientId}>
-        <BrowserRouter basename="/Trading-FE">
+        <BrowserRouter>
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<RegisterUser />} />

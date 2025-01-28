@@ -3,7 +3,6 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://nishit-mangal.github.io/Trading-FE/",
   "scripts": {
     "predeploy" : "npm run build",
     "deploy" : "gh-pages -d dist",

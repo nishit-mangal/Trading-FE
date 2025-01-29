@@ -6,6 +6,8 @@ import { LOCAL_STORAGE, prodURL } from "../constants";
 import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
 import googleImg  from "../assets/google.jpg"
 import logo from "../assets/NiVESHHOR.png"
+import wizard from "../assets/wizard.png"
+
 export const Login = () => {
     const navigate = useNavigate();
 
@@ -154,8 +156,16 @@ export const Login = () => {
             { isLoading && (
                 <div className="items-center my-2 font-light text-xs">Loading...</div>
             )}
-            <GoogleOAuthProvider>
-                <div className="flex flex-col justify-evenly w-full max-w-sm p-8 bg-white shadow-teal-600 shadow-lg rounded-lg">
+            <div className="flex justify-center w-3/5 max-w-2xl">
+                <div className="flex flex-col justify-start w-5/12 p-8 bg-white shadow-teal-600 border rounded-lg ">
+                    <div className="text-2xl font-sans font-semibold text-left">Welcome to</div>
+                    <div className="text-5xl font-serif font-bold text-teal-800">NIVESH</div>
+                    <img src={wizard} alt="Wizard" width={120} className="my-4"></img>       
+                    <div className="mt-2 text-base font-mono">Aapka apna</div> 
+                    <div className="mt-1 text-3xl font-serif">Portfolio Manager</div> 
+                </div>
+                <GoogleOAuthProvider>
+                <div className="flex flex-col justify-center w-7/12 p-8 bg-white shadow-teal-600 border rounded-lg">
                     {isAccountVerified === -1 && (
                         <div>
                             <div className="text-2xl font-sans font-semibold">Log in</div>
@@ -238,7 +248,8 @@ export const Login = () => {
                         />
                     )}
                 </div>
-            </GoogleOAuthProvider>
+                </GoogleOAuthProvider>
+            </div>
         </div>
     );
 };

@@ -53,7 +53,6 @@ export const MainPage = () => {
                     <img 
                         src={data?.profileImg} 
                         alt="Profile Image" 
-                        referrerpolicy="no-referrer"
                         height={35}
                         width={45}
                         className="rounded-full"

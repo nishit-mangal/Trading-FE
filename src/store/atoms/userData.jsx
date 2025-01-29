@@ -7,6 +7,7 @@ export const userData = atom({
         userEmail:"",
         userName:"",
         secretsExists:false,
-        apiKey:""
+        apiKey:"",
+        profileImg:""
     }
 })

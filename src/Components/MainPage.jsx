@@ -27,7 +27,8 @@ export const MainPage = () => {
             ...data,
             userName: msg?.name,
             secretsExists: msg?.secretsExists,
-            apiKey: msg?.apiKey
+            apiKey: msg?.apiKey,
+            profileImg: msg?.imgUrl
         })
         setShowApiPage(!msg?.secretsExists);
     } 
@@ -44,11 +45,20 @@ export const MainPage = () => {
                 <img className="rounded-md" src={logo} alt="Logo" width={100}></img>
                 <div className="font-serif font-bold text-xl"> {data.userName} </div>
                 {/* <BalanceComponent /> */}
-                <div className="flex w-[280px] justify-between">
+                <div className="flex w-[350px] justify-between">
                     <OrderHistoryBtn />
                     <GenerateAccessCode />
                     <ResetPasswordBtn />
                     <Logout />
+                    <img 
+                        src={data?.profileImg} 
+                        alt="Profile Image" 
+                        referrerpolicy="no-referrer"
+                        height={35}
+                        width={45}
+                        className="rounded-full"
+                    >
+                    </img>
                 </div>
                 {showApiPage && <ApiPage setShowApiPage={setShowApiPage} userId={data.userId}/>}
             </div>

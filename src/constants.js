@@ -1,11 +1,8 @@
-// export const localPort = "http://localhost:8000";
-export const localPort = "https://api-finance.nishit.online";
-
-// export const prodURL = "http://localhost:5173"
-export const prodURL = "https://finance.nishit.online";
-
-// export const webSocketURL = "ws://localhost:8000";
-export const webSocketURL = "wss://api-finance.nishit.online";
+const environment = import.meta.env.VITE_ENV;
+export const localPort = environment==="PROD" ? import.meta.env.VITE_TRADING_URL : "http://localhost:8000";
+export const prodURL = environment==="PROD" ? import.meta.env.VITE_FE_URL : "http://localhost:5173";
+export const webSocketURL = environment==="PROD" ? import.meta.env.VITE_WEBSOCKET_URL : "ws://localhost:8000";
+export const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || ""
 
 export const pageSizeToFetchOrders = 5
 

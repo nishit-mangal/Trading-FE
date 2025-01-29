@@ -10,9 +10,9 @@ import { RecoilRoot } from "recoil";
 import { ForgotPassword } from "./Components/ForgetPassword";
 import { PageNotFound } from "./Components/PageNotFound.jsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { googleClientId } from "./constants.js";
 
 
-const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || ""
 const LoginRoutes = () => {
   return <Outlet />;
 };

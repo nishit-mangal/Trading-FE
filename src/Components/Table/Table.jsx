@@ -3,7 +3,7 @@ import { Stocks } from "../Stocks/Stocks";
 import { PlaceOrder } from "../PlaceOrder/PlaceOrder";
 import { showPlaceOrderModal } from "../../store/atoms/stockData";
 import { useEffect, useState } from "react";
-import { webSocketURL } from "../../constants";
+import { LOCAL_STORAGE, webSocketURL } from "../../constants";
 
 export const Table = () => {
   const [messageRec, setMessageReceived] = useState("")
@@ -11,8 +11,9 @@ export const Table = () => {
   const [webSocket, setWebSocket] = useState(null)
   useEffect(()=>{
     let socket;
+    let upstoxAccessToken = localStorage.getItem(LOCAL_STORAGE.ACCESS_TOKEN);
     try{
-      socket = new WebSocket(webSocketURL);
+      socket = new WebSocket(`${webSocketURL}?token=${upstoxAccessToken}`);
     }catch(err){
       console.log("Error connecting websocket");
     }

@@ -20,9 +20,9 @@ export const GenerateAccessCode = () => {
       href={hrefUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex flex-col justify-between items-center p-2 rounded-xl hover:bg-[rgba(20,150,150,0.2)] hover:cursor-pointer"
+      className="flex flex-col items-center justify-center h-12 pb-1 rounded-sm box-border hover:border-b-2 border-teal-700 hover:cursor-pointer"
     >
-      <img src={accessToken} alt="accessToken image" height={30} width={30}></img>
+      <img src={accessToken} alt="accessToken image" height={35} width={35}></img>
       <div className="font-medium w-[90px] text-center" style={{ fontSize: "8px" }}>
         Generate Access Token
       </div>

@@ -7,12 +7,12 @@ export const AccessToken = () => {
   const [userId, setUserId] = useState();
 
   const generateAccessToken = async () => {
-    let response = await handleApiToGenerateAccessCode(code, userId);
-    if (!response){
-      alert("Access Code Not generated Successfully");
+    let {token, responseMessage} = await handleApiToGenerateAccessCode(code, userId);
+    if (!token){
+      alert(responseMessage);
       return;
     } 
-    localStorage.setItem(LOCAL_STORAGE.ACCESS_TOKEN, response);
+    localStorage.setItem(LOCAL_STORAGE.ACCESS_TOKEN, token);
     window.location.href = prodURL;
   };
   useEffect(() => {
@@ -25,9 +25,9 @@ export const AccessToken = () => {
     if (code !== "") generateAccessToken();
   }, [code]);
   return (
-    <>
-      <div>The access token is generated successfully. You may close this page.</div>
+    <div className="flex flex-col justify-start mt-8">
+      <div>This is the access token page.</div>
       <div>Refresh the page.</div>
-    </>
+    </div>
   );
 };

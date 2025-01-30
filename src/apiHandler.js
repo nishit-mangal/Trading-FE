@@ -63,12 +63,12 @@ export async function handleApiToGenerateAccessCode(code, userId){
     try{
         let response = await callApiToGenerateCode(code, userId);
         if(!response.data || response.data.responseCode!== HttpCode.SUCCESS || !response.data.data){
-            return null;
+            return {token: response.data.data, responseMessage: response.data.responseMessage};
         }
-        return response.data.data
+        return {token: response.data.data, responseMessage: response.data.responseMessage};
     }catch(err){
         console.log(err);
-        return null;
+        return {token: response.data.data, responseMessage: "Some Error Occured"};
     }
 }
 

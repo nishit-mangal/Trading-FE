@@ -161,7 +161,7 @@ export const Login = () => {
                     <div className="text-2xl font-sans font-semibold text-left text-teal-200">Welcome to</div>
                     <div className="text-5xl font-serif font-bold text-white">NIVESH</div>
                     <div className="my-4 flex justify-center items-center"><img src={wizard} alt="Wizard" width={160} className="bg-teal-50 "></img></div>       
-                    <div className="text-base font-mono font-semibold">Aapka apna</div> 
+                    <div className="text-base font-mono font-semibold text-teal-200">Aapka apna</div> 
                     <div className="text-3xl font-serif font-bold text-teal-50">Portfolio Manager</div> 
                 </div>
                 <GoogleOAuthProvider>

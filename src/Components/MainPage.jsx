@@ -11,6 +11,7 @@ import { handleApiToGetUser } from "../apiHandler";
 import { useSetRecoilState } from "recoil";
 import { ApiPage } from "./ApiPage"
 import logo from "../assets/NiVESHHOR.png"
+import { ApiEditBtn } from "./ApiEditBtn"
 
 export const MainPage = () => {
     const data = useRecoilValue(userData);
@@ -49,6 +50,7 @@ export const MainPage = () => {
                     <OrderHistoryBtn />
                     <GenerateAccessCode />
                     <ResetPasswordBtn />
+                    <ApiEditBtn />
                     <Logout />
                     <img 
                         src={data?.profileImg} 
@@ -59,7 +61,7 @@ export const MainPage = () => {
                     >
                     </img>
                 </div>
-                {showApiPage && <ApiPage setShowApiPage={setShowApiPage} userId={data.userId}/>}
+                {showApiPage && <ApiPage setShowApiPage={setShowApiPage} userId={data.userId} buttonType="LOG_OUT"/>}
             </div>
             <hr></hr>
             <Table />

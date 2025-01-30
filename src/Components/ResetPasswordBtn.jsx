@@ -11,11 +11,10 @@ export const ResetPasswordBtn = () => {
 
     return (
         <>
-            <div className="flex flex-col items-center justify-center h-12 pb-1 rounded-sm box-border hover:border-b-2 border-teal-700  hover:cursor-pointer">
+            <div className="flex flex-col items-center justify-center h-12 pb-1 rounded-sm box-border hover:border-b-2 border-teal-700  hover:cursor-pointer" onClick={handleResetPassword}>
                 <img src={resetImg} alt="Reset image" height={35} width={35} className="p-1"></img>
                 <div
                     className="font-medium"
-                    onClick={handleResetPassword}
                     style={{ fontSize: "8px" }}
                 >
                     Reset Password

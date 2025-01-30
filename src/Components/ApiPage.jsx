@@ -2,8 +2,9 @@ import { useState } from "react";
 import { handleApiToSetSecret } from "../apiHandler";
 import { localPort } from "../constants";
 import { Logout } from "./Logout";
+import closeImage from "../assets/close.png"
 
-export const ApiPage = ({ setShowApiPage, userId }) => {
+export const ApiPage = ({ setShowApiPage, userId , buttonType}) => {
     const [responseErr, setResponseErr] = useState();    
     const [formData, setFormData] = useState({
         apiSecret: "",
@@ -26,7 +27,9 @@ export const ApiPage = ({ setShowApiPage, userId }) => {
         setResponseErr(null);
         setShowApiPage(false);
     }
-
+    const handleClose = () => {
+        setShowApiPage(false);
+    }
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -45,7 +48,13 @@ export const ApiPage = ({ setShowApiPage, userId }) => {
             <div className="flex flex-col justify-evenly w-full max-w-sm p-8 bg-white shadow-teal-600 shadow-lg rounded-lg ">
                 <div className="flex justify-between">
                     <div className="text-2xl font-sans font-semibold">Enter API details</div>
-                    <Logout />
+                    {
+                        buttonType==="LOG_OUT" ? 
+                            <Logout /> : 
+                            <button className="transition-transform duration-150 ease-in-out transform active:scale-90" onClick={handleClose}>
+                                <img src={closeImage} alt="Logout" height={15} width={15} className="transition-transform duration-150 ease-in-out transform hover:scale-110"></img>
+                            </button>
+                    }
                 </div>
 
                 <div className="text-xs font-serif text-gray-700 mt-2">

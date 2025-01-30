@@ -160,7 +160,7 @@ export const Login = () => {
                 <div className="flex flex-col justify-start w-5/12 p-5 bg-teal-700 border rounded-lg ">
                     <div className="text-2xl font-sans font-semibold text-left text-teal-200">Welcome to</div>
                     <div className="text-5xl font-serif font-bold text-white">NIVESH</div>
-                    <img src={wizard} alt="Wizard" width={150} className="my-4 bg-white"></img>       
+                    <div className="my-4 flex justify-center items-center"><img src={wizard} alt="Wizard" width={160} className="bg-teal-50 "></img></div>       
                     <div className="text-base font-mono font-semibold">Aapka apna</div> 
                     <div className="text-3xl font-serif font-bold text-teal-50">Portfolio Manager</div> 
                 </div>

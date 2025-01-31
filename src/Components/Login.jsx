@@ -156,8 +156,8 @@ export const Login = () => {
             { isLoading && (
                 <div className="items-center my-2 font-light text-xs">Loading...</div>
             )}
-            <div className="flex justify-center w-3/5 max-w-2xl">
-                <div className="flex flex-col justify-start w-5/12 p-5 bg-teal-700 border rounded-lg ">
+            <div className="flex flex-col sm:flex-row justify-center max-w-2xl">
+                <div className="flex flex-col justify-start sm:w-5/12 p-5 bg-teal-700 border rounded-lg ">
                     <div className="text-2xl font-sans font-semibold text-left text-teal-200">Welcome to</div>
                     <div className="text-5xl font-serif font-bold text-white">NIVESH</div>
                     <div className="my-4 flex justify-center items-center"><img src={wizard} alt="Wizard" width={160} className="bg-teal-50 "></img></div>       
@@ -165,7 +165,7 @@ export const Login = () => {
                     <div className="text-3xl font-serif font-bold text-teal-50">Portfolio Manager</div> 
                 </div>
                 <GoogleOAuthProvider>
-                    <div className="flex flex-col justify-center w-7/12 p-8 bg-white shadow-teal-600 border rounded-lg">
+                    <div className="flex flex-col justify-center sm:w-7/12 p-8 bg-white shadow-teal-600 border rounded-lg">
                         {isAccountVerified === -1 && (
                             <div>
                                 <div className="text-2xl font-sans font-semibold">Log in</div>

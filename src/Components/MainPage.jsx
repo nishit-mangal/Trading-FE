@@ -12,6 +12,7 @@ import { useSetRecoilState } from "recoil";
 import { ApiPage } from "./ApiPage"
 import logo from "../assets/NiVESHHOR.png"
 import { ApiEditBtn } from "./ApiEditBtn"
+import { Profile } from "./Profile"
 
 export const MainPage = () => {
     const data = useRecoilValue(userData);
@@ -44,22 +45,15 @@ export const MainPage = () => {
         <>
             <div className="data-class p-2 items-center">
                 <img className="rounded-md" src={logo} alt="Logo" width={100}></img>
-                <div className="font-serif font-bold text-xl"> {data.userName} </div>
+                {/* <div className="font-serif font-bold text-xl"> {data.userName} </div> */}
                 {/* <BalanceComponent /> */}
-                <div className="flex w-[350px] justify-between">
+                <div className="flex gap-1 lg:gap-5 xl:gap-7 2xl:gap-8 justify-between">
                     <OrderHistoryBtn />
                     <GenerateAccessCode />
                     <ResetPasswordBtn />
                     <ApiEditBtn />
+                    <Profile/>
                     <Logout />
-                    <img 
-                        src={data?.profileImg} 
-                        alt="Profile Image" 
-                        height={35}
-                        width={45}
-                        className="rounded-full"
-                    >
-                    </img>
                 </div>
                 {showApiPage && <ApiPage setShowApiPage={setShowApiPage} userId={data.userId} buttonType="LOG_OUT"/>}
             </div>

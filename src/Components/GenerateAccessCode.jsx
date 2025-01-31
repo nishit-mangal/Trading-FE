@@ -23,7 +23,7 @@ export const GenerateAccessCode = () => {
       className="flex flex-col items-center justify-center h-12 pb-1 rounded-sm box-border hover:border-b-2 border-teal-700 hover:cursor-pointer"
     >
       <img src={accessToken} alt="accessToken image" height={35} width={35}></img>
-      <div className="font-medium w-[90px] text-center" style={{ fontSize: "8px" }}>
+      <div className="font-medium text-center" style={{ fontSize: "8px" }}>
         Generate Access Token
       </div>
     </a>

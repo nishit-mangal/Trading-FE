@@ -45,7 +45,7 @@ export const MainPage = () => {
     return (
         <>
             <div className="data-class p-2 items-center">
-                <img className="rounded-md" src={logo} alt="Logo" width={100}></img>
+                <img className="rounded-md w-16 sm:w-24" src={logo} alt="Logo" width={100}></img>
                 {/* <div className="font-serif font-bold text-xl"> {data.userName} </div> */}
                 {/* <BalanceComponent /> */}
                 <div className="flex gap-1 lg:gap-5 xl:gap-7 2xl:gap-8 justify-between">

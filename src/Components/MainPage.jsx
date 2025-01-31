@@ -13,6 +13,7 @@ import { ApiPage } from "./ApiPage"
 import logo from "../assets/NiVESHHOR.png"
 import { ApiEditBtn } from "./ApiEditBtn"
 import { Profile } from "./Profile"
+import { LogoutBtn } from "./LogoutBtn"
 
 export const MainPage = () => {
     const data = useRecoilValue(userData);
@@ -53,7 +54,7 @@ export const MainPage = () => {
                     <ResetPasswordBtn />
                     <ApiEditBtn />
                     <Profile/>
-                    <Logout />
+                    <LogoutBtn />
                 </div>
                 {showApiPage && <ApiPage setShowApiPage={setShowApiPage} userId={data.userId} buttonType="LOG_OUT"/>}
             </div>

@@ -43,7 +43,7 @@ export const Stocks = () => {
         <table>
           <thead>
             <tr>
-              <th className="fixed-column">Company Name</th>
+              <th>Company Name</th>
               <th>Profit</th>
               <th>Quantity</th>
               <th>Average Price</th>
@@ -66,10 +66,10 @@ export const Stocks = () => {
                   <td>{row.percentFromMax}</td>
                   <td>
                     <button
-                      className="place-order-button"
+                      className="place-order-button hover:bg-teal-900 bg-teal-700"
                       onClick={() => placeOrder(row)}
                     >
-                      Place Order
+                      Live Price
                     </button>
                   </td>
                 </tr>

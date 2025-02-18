@@ -49,7 +49,7 @@ export const MainPage = () => {
                 {/* <div className="font-serif font-bold text-xl"> {data.userName} </div> */}
                 {/* <BalanceComponent /> */}
                 <div className="flex gap-1 lg:gap-5 xl:gap-7 2xl:gap-8 justify-between">
-                    <OrderHistoryBtn />
+                    {/* <OrderHistoryBtn /> */}
                     <GenerateAccessCode />
                     <ResetPasswordBtn />
                     <ApiEditBtn />

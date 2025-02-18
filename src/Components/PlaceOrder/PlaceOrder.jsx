@@ -46,54 +46,38 @@ export const PlaceOrder = ( {webSocket, messageRec} ) => {
   return (
     <div className="place-order-container">
       <div className="place-order-box">
-        <div className="flex justify-end">
+        <div className="flex justify-between p-4 gap-8 text-white bg-teal-900 rounded-md">
+          <div className="font-bold text-xl font-mono">{data.companyName}</div>
           <button onClick={cancelButton} >
-            <img src={closeImg} alt="Cancel" height={15} width={15}></img>
+            <img src={closeImg} alt="Cancel" height={12} width={12}></img>
           </button>
         </div>
-        <p className="mt-2">
+        
+        <div className="py-8 font-extrabold text-5xl text-center font-serif align-middle">{messageRec ?? "NA"} ₹</div>
+        <div className="font-bold text-xl font-mono text-teal-900">{data.instrumentToken}</div>
+        <div className="font-medium text-base font-sans mt-2 text-teal-900">{data.percentFromMax*-1}% from its 1 year max</div>
+        <div className="font-normal text-xs font-sans text-teal-900">{data.quantity} shares in your account</div>
+        {/* <p className="mt-2">
           We only support 'MARKET' orders and 'DAY' delivery for now. We don't
           support intraday 'IOC' orders or 'LIMIT' orders.
-        </p>
-        <input
+        </p> */}
+        {/* <input
           id="quantity"
           placeholder="Quantity"
           type="number"
           min="0"
           onChange={handleInputTag}
           className="mt-4 p-1"
-        ></input>
+        ></input> */}
 
-        <div className="table-container-placeOrder">
-          <div className="row">
-            <div className="cell">Company Name: </div>
-            <div>{data.companyName}</div>
-          </div>
-          <div className="row">
-            <div className="cell">Current Quantity: </div>
-            <div>{data.quantity}</div>
-          </div>
-          <div className="row">
-            <div className="cell">% from max: </div>
-            <div>{data.percentFromMax}</div>
-          </div>
-          <div className="row">
-            <div className="cell">Identifier: </div>
-            <div>{data.instrumentToken}</div>
-          </div>
-          <div className="row">
-            <div className="cell">Live Price: </div>
-            <div>{messageRec ?? "NA"}</div>
-          </div>
-        </div>
-        <div className="flex justify-around mt-4">
+        {/* <div className="flex justify-around mt-4">
           <div className="p-2 min-w-32 PX-10 text-center bg-teal-600 rounded-3xl hover:cursor-pointer" onClick={() => tradeButton("BUY")}>
             Buy
           </div>
           <div className="p-2 min-w-32 px-10 text-center bg-red-400 rounded-3xl hover:cursor-pointer" onClick={() => tradeButton("SELL")}>
             Sell
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

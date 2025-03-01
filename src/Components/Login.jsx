@@ -249,7 +249,7 @@ export const Login = () => {
                         )}
                     </div>
                 </GoogleOAuthProvider>
-                <div className="sm:w-5/12"> Available at just 100 INR /year</div>
+                {/* <div className="sm:w-5/12"> Available at just 100 INR /year</div> */}
             </div>
         </div>
     );

@@ -92,8 +92,8 @@ export async function handleApiToRegisterUser(userData){
 
 export async function handleApiToValidateOTP(email, otp, pin){
     try{
-        otp = otp.includes("") ? null : otp.join("");
-        pin = pin.includes("") ? null : pin.join("");
+        otp = (!otp || otp.includes("")) ? null : otp.join("");
+        pin = (!pin || pin.includes("")) ? null : pin.join("");
         let response = await callApiToVerifyOTP({email, otp, pin});
         if(!response.data || response.data.responseCode!== HttpCode.SUCCESS){
             return {status:"Err", msg: response.data.responseMessage};

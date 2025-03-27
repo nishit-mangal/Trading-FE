@@ -4,8 +4,10 @@ import { PlaceOrder } from "../PlaceOrder/PlaceOrder";
 import { showPlaceOrderModal } from "../../store/atoms/stockData";
 import { useEffect, useState } from "react";
 import { LOCAL_STORAGE, webSocketURL } from "../../constants";
+import { userData } from "../../store/atoms/userData";
 
 export const Table = () => {
+  const data = useRecoilValue(userData);
   const [messageRec, setMessageReceived] = useState("")
   const [sendMessage, setSendMessage] = useState("")
   const [webSocket, setWebSocket] = useState(null)
@@ -13,7 +15,7 @@ export const Table = () => {
     let socket;
     let upstoxAccessToken = localStorage.getItem(LOCAL_STORAGE.ACCESS_TOKEN);
     try{
-      socket = new WebSocket(`${webSocketURL}?token=${upstoxAccessToken}`);
+      socket = new WebSocket(`${webSocketURL}?token=${upstoxAccessToken}&userId=${data.userId}`);
     }catch(err){
       console.log("Error connecting websocket");
     }
@@ -27,7 +29,8 @@ export const Table = () => {
       console.log(message);
       setMessageReceived(message.data ?? "")
     }
-  }, [])
+  }, [data.userId]);
+
   const isShowPlaceOrderModal = useRecoilValue(showPlaceOrderModal);
   return (
     <>

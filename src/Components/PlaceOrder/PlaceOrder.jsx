@@ -9,39 +9,39 @@ import closeImg from "../../assets/close.png"
 export const PlaceOrder = ( {webSocket, messageRec} ) => {
   const data = useRecoilValue(stockData);
   const setShowPlaceOrderModal = useSetRecoilState(showPlaceOrderModal);
-  const [quantity, setQuantity] = useState(0);
+  // const [quantity, setQuantity] = useState(0);
 
   useEffect(()=>{
     webSocket.send(`SUBSCRIBE ${data.instrumentToken}`)
-  }, [])
+  }, []);
 
   const cancelButton = () => {
     setShowPlaceOrderModal(false);
   };
 
-  const handleInputTag = (e) => {
-    if (e.target.value) {
-      setQuantity(e.target.value);
-    }
-  };
+  // const handleInputTag = (e) => {
+  //   if (e.target.value) {
+  //     setQuantity(e.target.value);
+  //   }
+  // };
 
-  const tradeButton = async (action) => {
-    let response = await handleApiToTrade(
-      quantity,
-      data.instrumentToken,
-      action
-    );
-    if (!response) {
-      alert("Issues Placing your order");
-    } else if (response.status !== OrderStatus.COMPLETE) {
-      alert(
-        `Your order was placed with Order id: ${response.order_id} but the current status is ${response.status}. This can be due to insufficient balance.`
-      );
-    } else {
-      alert(`Order placed Successfully. Order Id: ${response.order_id}`);
-      setShowPlaceOrderModal(false);
-    }
-  };
+  // const tradeButton = async (action) => {
+  //   let response = await handleApiToTrade(
+  //     quantity,
+  //     data.instrumentToken,
+  //     action
+  //   );
+  //   if (!response) {
+  //     alert("Issues Placing your order");
+  //   } else if (response.status !== OrderStatus.COMPLETE) {
+  //     alert(
+  //       `Your order was placed with Order id: ${response.order_id} but the current status is ${response.status}. This can be due to insufficient balance.`
+  //     );
+  //   } else {
+  //     alert(`Order placed Successfully. Order Id: ${response.order_id}`);
+  //     setShowPlaceOrderModal(false);
+  //   }
+  // };
 
   return (
     <div className="place-order-container">
@@ -55,8 +55,8 @@ export const PlaceOrder = ( {webSocket, messageRec} ) => {
         
         <div className="py-8 font-extrabold text-5xl text-center font-serif align-middle">{messageRec ?? "NA"} ₹</div>
         <div className="font-bold text-xl font-mono text-teal-900">{data.instrumentToken}</div>
-        <div className="font-medium text-base font-sans mt-2 text-teal-900">{data.percentFromMax*-1}% from its 1 year max</div>
-        <div className="font-normal text-xs font-sans text-teal-900">{data.quantity} shares in your account</div>
+        <div className="font-medium text-base font-sans mt-2 text-teal-900">{data.percentFromMax*-1}% down from its 1 year max</div>
+        <div className="font-normal text-xs font-sans text-teal-900">{data.quantity} shares in your demat account</div>
         {/* <p className="mt-2">
           We only support 'MARKET' orders and 'DAY' delivery for now. We don't
           support intraday 'IOC' orders or 'LIMIT' orders.

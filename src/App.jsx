@@ -11,6 +11,7 @@ import { ForgotPassword } from "./Components/ForgetPassword";
 import { PageNotFound } from "./Components/PageNotFound.jsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { googleClientId } from "./constants.js";
+import { AboutUs } from "./Components/AboutUsPage.jsx";
 
 
 const LoginRoutes = () => {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<RegisterUser />} />
             <Route path="/accessToken" element={<AccessToken />} />
+            <Route path="/aboutUs" element={<AboutUs />} />
             <Route
               path="/forgotPassword/:userId/:token"
               element={<ForgotPassword />}

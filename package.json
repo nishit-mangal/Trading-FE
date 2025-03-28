@@ -4,14 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d dist",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build --mode production",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview --host --port 5173"
   },
   "dependencies": {
+    "@radix-ui/react-tooltip": "^1.1.8",
     "@react-oauth/google": "^0.12.1",
     "axios": "^1.6.7",
     "react": "^18.2.0",

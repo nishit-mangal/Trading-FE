@@ -7,6 +7,7 @@ import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
 import googleImg  from "../assets/google.jpg"
 import logo from "../assets/NiVESHHOR.png"
 import wizard from "../assets/wizard.png"
+import * as  Tooltip from "@radix-ui/react-tooltip";
 
 export const Login = () => {
     const navigate = useNavigate();
@@ -134,6 +135,11 @@ export const Login = () => {
         redirect_uri: prodURL,
     });
 
+    const handleAboutUs = () => {
+        navigate({
+            pathname: "/aboutUs"
+        });
+    }
     useEffect(() => {
         if (localStorage.getItem(LOCAL_STORAGE.USER_LOGIN_TOKEN))
             verifyToken(localStorage.getItem(LOCAL_STORAGE.USER_LOGIN_TOKEN));
@@ -149,8 +155,26 @@ export const Login = () => {
                     width={125}
                 ></img>
                 <div className="flex items-center gap-8 text-teal-800 text-lg font-semibold font-mono">
-                    <div className="hover:cursor-pointer hover:text-xl transition-all ease-in-out">About Us</div>
-                    <div className="hover:cursor-pointer hover:text-xl transition-all ease-in-out">Contact Us</div>
+                    <div className="hover:cursor-pointer hover:text-xl transition-all ease-in-out" onClick={handleAboutUs}>About Us</div>
+                    <Tooltip.Provider delayDuration={10}>
+                        <Tooltip.Root>
+                            <Tooltip.Trigger asChild>
+                                <div className="hover:cursor-pointer hover:text-xl transition-all ease-in-out">
+                                    Contact Us
+                                </div>
+                            </Tooltip.Trigger>
+                            <Tooltip.Portal>
+                                <Tooltip.Content 
+                                    className="bg-white text-teal-900 text-sm rounded-lg px-4 py-2 border-2"
+                                    side="top"
+                                    align="center"
+                                >
+                                    Email: nishitmangal5@gmail.com
+                                    <Tooltip.Arrow className="fill-teal-900" />
+                                </Tooltip.Content>
+                            </Tooltip.Portal>
+                        </Tooltip.Root>
+                    </Tooltip.Provider>
                 </div>
             </nav>
 
@@ -286,6 +310,7 @@ export const Login = () => {
                         </div>
                     </GoogleOAuthProvider>
                 </div>
+                <div className="text-teal-900 font-bold"> Made with ❤️ by Nishit Mangal in 🇮🇳</div>
             </div>
         </div>
     );

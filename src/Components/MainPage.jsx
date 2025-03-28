@@ -1,6 +1,5 @@
 import { BalanceComponent } from "./BalanceComponent/BalanceComponent"
 import { GenerateAccessCode } from "./GenerateAccessCode"
-import { Logout } from "./Logout"
 import { OrderHistoryBtn } from "./OrderHistoryBtn/OrderHistoryBtn"
 import { ResetPasswordBtn } from "./ResetPasswordBtn"
 import { Table } from "./Table/Table"

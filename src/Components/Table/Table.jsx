@@ -25,10 +25,8 @@ export const Table = () => {
       console.log("connected to Server");
       setWebSocket(socket)
     }
-    socket.onmessage = (message) =>{
-      console.log(message);
-      setMessageReceived(message.data ?? "")
-    }
+    socket.onmessage = (message) =>
+      setMessageReceived(message.data ?? "");
   }, [data.userId]);
 
   const isShowPlaceOrderModal = useRecoilValue(showPlaceOrderModal);

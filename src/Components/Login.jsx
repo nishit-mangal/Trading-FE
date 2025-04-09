@@ -310,7 +310,7 @@ export const Login = () => {
                         </div>
                     </GoogleOAuthProvider>
                 </div>
-                <div className="text-teal-900 font-bold"> Made with ❤️ by Nishit Mangal in 🇮🇳</div>
+                <div className="text-teal-900 font-bold"> Made with ❤️ by Nishit in 🇮🇳</div>
             </div>
         </div>
     );

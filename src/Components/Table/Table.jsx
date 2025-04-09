@@ -14,6 +14,7 @@ export const Table = () => {
   useEffect(()=>{
     let socket;
     let upstoxAccessToken = localStorage.getItem(LOCAL_STORAGE.ACCESS_TOKEN);
+    console.log("upstoxAccessToken: ", upstoxAccessToken, ", UserID: ", data.userId);
     try{
       socket = new WebSocket(`${webSocketURL}?token=${upstoxAccessToken}&userId=${data.userId}`);
     }catch(err){
